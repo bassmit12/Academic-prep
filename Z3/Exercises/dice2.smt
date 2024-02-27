@@ -26,22 +26,9 @@
 (assert (= G 11))
 (assert (= E 12))
 
-; All dice can be seen as a 3*4 grid where dice 2 position 3 is the integer resenting on (2, 3)
+; All dice can be seen as a 4*3 grid where dice 2 position 3 is the integer resenting on (2, 3)
 (declare-fun Dice (Int Int) Int)
 
-;
-(declare-fun Words (Int Int Int) Bool
-    
-)
-
-(assert (forall ((letter1 Int) (letter2 Int) (letter3 Int))
-            (=> (and (distinct (Dice 1 1) (Dice 2 1) (Dice 3 1))
-                     (distinct (Dice 1 2) (Dice 2 2) (Dice 3 2))
-                     (distinct (Dice 1 3) (Dice 2 3) (Dice 3 3))
-                     (distinct (Dice 1 4) (Dice 2 4) (Dice 3 4)))
-                (not (and (= (Words letter1 letter2 letter3) true)
-                          (= (Words letter1 letter2 letter3) true)
-                          (= (Words letter1 letter2 letter3) true))))))
 
 ; begin assert
 (assert (and
@@ -49,47 +36,44 @@
         (Dice 1 1)
         (Dice 1 2)
         (Dice 1 3)
-        (Dice 1 4)
 
         (Dice 2 1)
         (Dice 2 2)
         (Dice 2 3)
-        (Dice 2 4)
 
         (Dice 3 1)
         (Dice 3 2)
         (Dice 3 3)
-        (Dice 3 4)
 
-
+        (Dice 4 1)
+        (Dice 4 2)
+        (Dice 4 3)
     )
     (and
         (<= 1 (Dice 1 1) 12)
         (<= 1 (Dice 1 2) 12)
         (<= 1 (Dice 1 3) 12)
-        (<= 1 (Dice 1 4) 12)
-
         (<= 1 (Dice 2 1) 12)
         (<= 1 (Dice 2 2) 12)
         (<= 1 (Dice 2 3) 12)
-        (<= 1 (Dice 2 4) 12)
-
         (<= 1 (Dice 3 1) 12)
         (<= 1 (Dice 3 2) 12)
         (<= 1 (Dice 3 3) 12)
-        (<= 1 (Dice 3 4) 12)
-
+        (<= 1 (Dice 4 1) 12)
+        (<= 1 (Dice 4 2) 12)
+        (<= 1 (Dice 4 3) 12)
     )
-    
 ))
 (check-sat)
 
 (echo "dice1 contains the following letters: ")
-(get-value ((Dice 1 1)(Dice 1 2)(Dice 1 3)(Dice 1 4)))
+(get-value ((Dice 1 1)(Dice 1 2)(Dice 1 3)))
 
 (echo "dice2 contains the following letters: ")
-(get-value ((Dice 2 1)(Dice 2 2)(Dice 2 3)(Dice 2 4)))
+(get-value ((Dice 2 1)(Dice 2 2)(Dice 2 3)))
 
 (echo "dice3 contains the following letters: ")
-(get-value ((Dice 3 1)(Dice 3 2)(Dice 3 3)(Dice 3 4)))
+(get-value ((Dice 3 1)(Dice 3 2)(Dice 3 3)))
 
+(echo "dice4 contains the following letters: ")
+(get-value ((Dice 4 1)(Dice 4 2)(Dice 4 3)))

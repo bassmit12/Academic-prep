@@ -17,24 +17,43 @@ normalize : String -> String
 normalize string =
    String.filter isCharacter string
 
-encrypt: Int -> Char -> Char
-encrypt shiftAmount character =
-  let
-    encodedCharacter = Char.toCode character
-    
-  in
+encodeChar: Int -> Char -> Char
+encodeChar shiftNumber character =
+    if Char.isAlpha character then
+        let 
+            baseCode = if Char.isUpper character then 65 else 97
+            characterCode = Char.toCode character - baseCode
+            shiftedCharacterCode = (modBy 26 (characterCode + shiftNumber)) + baseCode
+        in Char.fromCode shiftedCharacterCode
+    else character
 
-  Char.fromCode shiftedCharacter
+decodeChar: Int -> Char -> Char
+decodeChar shiftNumber character =
+    encodeChar (negate shiftNumber) character
 
 
+applyOperation : (Int -> Char -> Char) -> Int -> List Char -> List Char
+applyOperation operation shiftNumber charList =
+    case charList of
+        [] ->
+            []
+
+        firstChar :: restOfChars ->
+            operation shiftNumber firstChar :: applyOperation operation shiftNumber restOfChars
 
 
+encrypt : Int -> String -> String
+encrypt shiftNumber string =
+    let
+        listString = String.toList string
+        encodedListString = applyOperation encodeChar shiftNumber listString
+    in
+    String.fromList encodedListString
 
-
---encryptString: Int -> String -> String
---encryptString shiftAmount character =
-  
-  
-
---decryptString: Int -> String -> String
---decryptString shiftAmount character =
+decrypt : Int -> String -> String
+decrypt shiftNumber string =
+    let
+        listString = String.toList string
+        decodedListString = applyOperation decodeChar shiftNumber listString
+    in
+    String.fromList decodedListString
