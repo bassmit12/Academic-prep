@@ -13,13 +13,7 @@
 (declare-const E Bool)
 
 ; only 1 letter of each word can be placed on a dice
-(define-fun dice ((Letter1 Bool) (Letter2 Bool) (Letter3 Bool)) Bool
-   (or 
-      (and Letter1 (not Letter2) (not Letter3))
-      (and Letter2 (not Letter1) (not Letter3))
-      (and Letter3 (not Letter1) (not Letter2))
-   )
-)
+(define-fun dice(()))
 
 
 ; Assert the words
