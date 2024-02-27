@@ -30,9 +30,8 @@
 (declare-fun Dice (Int Int) Int)
 
 ;
-(declare-fun Words (Int Int Int) Bool
+(define-fun Words ((Letter1 Int) (Letter2 Int) (Letter3 Int)) Bool
 
-    
 )
 
 
@@ -74,6 +73,9 @@
         (<= 1 (Dice 3 4) 12)
 
     )
+    (Words C A T)
+    (Words S O N)
+    (Words P O D)
     
 ))
 (check-sat)
