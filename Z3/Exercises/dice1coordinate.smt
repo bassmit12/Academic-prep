@@ -31,6 +31,24 @@
 
 ;
 (define-fun Words ((Letter1 Int) (Letter2 Int) (Letter3 Int)) Bool
+  (and
+    (distinct Letter1 Letter2 Letter3)
+    (and
+      (or (= Letter1 (Dice 1)) (= Letter1 (Dice 2)) (= Letter1 (Dice 3)) (= Letter1 (Dice 4)))
+      (or (= Letter2 (Dice 1)) (= Letter2 (Dice 2)) (= Letter2 (Dice 3)) (= Letter2 (Dice 4)))
+      (or (= Letter3 (Dice 1)) (= Letter3 (Dice 2)) (= Letter3 (Dice 3)) (= Letter3 (Dice 4)))
+    )
+    (and
+      (or (= Letter1 (Dice 5)) (= Letter1 (Dice 6)) (= Letter1 (Dice 7)) (= Letter1 (Dice 8)))
+      (or (= Letter2 (Dice 5)) (= Letter2 (Dice 6)) (= Letter2 (Dice 7)) (= Letter2 (Dice 8)))
+      (or (= Letter3 (Dice 5)) (= Letter3 (Dice 6)) (= Letter3 (Dice 7)) (= Letter3 (Dice 8)))
+    )
+    (and
+      (or (= Letter1 (Dice 9)) (= Letter1 (Dice 10)) (= Letter1 (Dice 11)) (= Letter1 (Dice 12)))
+      (or (= Letter2 (Dice 9)) (= Letter2 (Dice 10)) (= Letter2 (Dice 11)) (= Letter2 (Dice 12)))
+      (or (= Letter3 (Dice 9)) (= Letter3 (Dice 10)) (= Letter3 (Dice 11)) (= Letter3 (Dice 12)))
+    )
+  )
 )
 
 
