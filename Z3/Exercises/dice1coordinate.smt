@@ -28,7 +28,7 @@
 
 ; All dice can be seen as a 3*4 grid where dice 2 position 3 is the integer resenting on (2, 3)
 (declare-fun Dice (Int) Int)
-(declare-fun ReverseDice (Int) Int)
+
 ;
 (define-fun Words ((Letter1 Int) (Letter2 Int) (Letter3 Int)) Bool
 )
