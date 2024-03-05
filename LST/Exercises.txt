@@ -1,0 +1,55 @@
+Exercise 6:
+  A:
+  If we take X which is a subset of B and a subset of A then
+  So X is in both A and B 
+  x is in A ∩ B 
+  So every element of C is also an element of A ∩ B
+  True
+
+  B:
+  If C is a subset of the intersection of A and B then C must be a subset of A aswell as both
+  True 
+
+Exercise 7:
+  A:
+  A = {1, 2}
+  B = {3,4}
+  C = {1, 2, 3, 4}
+  
+  So C is the union of A and B but C is not a subset of A and not a subset of B since elements are missing
+  False
+
+  B:
+  A = {1, 2}
+  B = {1}
+  C = {1, 2, 3}
+  
+  False because the union of A and B can miss an element as shown above which makes this statement False
+
+  C:
+  A = {1, 2}
+  B = {3, 4}
+  C= {1, 2, 3, 4, 5}
+
+  A Can be a subset of C and B can be a subset of C therefor this is True
+
+Exercise 8:
+  A:
+  A = {1, 2}
+  B = {1, 2, 3}
+
+  A is a subset of B 
+  Union of A and B = B 
+  True 
+
+  B:
+  A = {1, 2}
+  B = {1, 2, 3}
+
+  A is a subset of B 
+  Intersection of A and B = A 
+  True 
+
+  C:
+
+
