@@ -65,7 +65,33 @@ decrypt shiftNumber string =
     in
     String.fromList decodedListString -- Convert decoded list back to a string
 
--- Use left to check X characters to the right of the first character of a string and then check if those are equal to the given key
-candidates: List String -> String -> List (Int, String)
 
+-- Function to check if the list contains at least one True value
+listContainsTrue : List Bool -> Bool
+listContainsTrue boolList =
+    List.any (\x -> x == True) boolList
 
+findCandidates : String -> List String -> Bool
+findCandidates string listOfSearchStrings =
+  let
+    boolList = List.map (\searchString -> String.contains searchString string) listOfSearchStrings
+  in 
+    listContainsTrue boolList
+
+findCandidatesRec : String -> List String -> Bool
+findCandidatesRec string listOfSearchStrings =
+    case listOfSearchStrings of
+        [] ->
+            False
+
+        firstSearchString :: restOfSearchStrings ->
+            String.contains firstSearchString string || findCandidatesRec string restOfSearchStrings
+
+candidates : List String -> String -> List (Int, String)
+candidates listOfSearchStrings string =
+    let
+        possibleKeys = List.range 0 25 -- List of possible shift values (0 to 25)
+        allLists = List.map (\key -> (key, encrypt key string)) possibleKeys
+        passingLists = List.filter (\(key, encrypted) -> findCandidatesRec encrypted listOfSearchStrings) allLists
+    in
+        passingLists
