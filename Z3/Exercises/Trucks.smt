@@ -17,6 +17,10 @@
         (
             <= nuzzlesAmount 1
         )
+        (= 8
+            (+ nuzzlesAmount prittlesAmount skipplesAmount crottlesAmount dupplesAmount)
+        )
+        
     ))
 )
 
