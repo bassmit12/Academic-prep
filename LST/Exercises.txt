@@ -51,5 +51,159 @@ Exercise 8:
   True 
 
   C:
+  A = {1, 2}
+  
+  A is the intersection and union of A so 
+  True 
 
+  D: 
+  The intersection of A and empty set can only be empty set because no elements are in empty set 
+  True
 
+  E: 
+  The union of A and empty sets is A because empty set does not contain any elements that are not in A 
+  True 
+
+Exercise 9:
+  A:
+
+  B: 
+
+Exercise 10:
+  A:
+  A ∩ (B ∪ C) -> Distributive law 
+  (A ∩ B) ∪ (A ∩ C) 
+  True
+
+  B: 
+  Same law as above
+  True
+
+Exercise 11:
+  Yes Distributive law
+
+Exercise 12:
+  A:
+  True
+
+  B: 
+  Universe
+
+Exercise 13:
+ A:
+ (A ∩ B)^c -> DeMorgan
+ (A^c ∪ B^c)
+
+ B: 
+ Same as above use DeMorgan
+
+Exercise 14:
+
+Exercise 15:
+  Let A = {1, 2, 3} and B = {3, 4, 5}.
+
+  Then, A ∪ B = {1, 2, 3, 4, 5}, A ∩ B = {3}, |A| = 3, and |B| = 3.
+
+  Now, | A ∪ B | + | A ∩ B | = 5 + 1 = 6.
+
+  However, |A| + |B| = 3 + 3 = 6.
+
+  So, | A ∪ B | + | A ∩ B | ≠ |A| + |B|
+
+Exercise 16:
+  (A ∩ B) ∪ (A ∩ B^c) -> Distributive
+  A ∩ (B ∪ B^c) Complement
+  A ∩ U -> Identity
+  A 
+
+  So True
+
+Exercise 17:
+  A:
+  A = 3
+
+  B:
+  2^A =
+  2^3 =
+  8
+  
+  C:
+  P(A)={{},{{0}},{{0,1}},{{0,{0,1}}},{{0},{0,1}},{{0},{0,{0,1}}},{{0,1},{0,{0,1}}},{{0},{0,1},{0,{0,1}}}}
+
+  D:
+  Yes
+
+  E: 
+  no 
+
+  F: 
+  No 
+
+Exercise 18:
+
+Exercise 19:
+  A: True
+  B: False
+  C: True 
+  D: False
+
+Exercise 20:
+  (2x, x+y)=(6,2)
+
+  2x = 6
+  x = 3
+
+  3 + y = 2
+  y = -1
+
+Exercise 21:
+  Uniqueness: Each element in the domain (P in this case) can only map to one element in the codomain (Q in this case).
+  Order matters: The order of elements in the domain matters and should be reflected in the order of their mapped elements in the codomain.
+
+  A: False
+  B: False 
+  C: False
+  D: False
+  E: True 
+  F: False
+  G: True 
+
+Exercise 22:
+  P x P  Q
+ (1, 1)  (a)
+ (1, 2)  (b)
+ (2, 1)
+ (2, 2)
+
+ A: False
+ B: False 
+ C: True 
+ D: False 
+
+Exercise 23:
+ A: True
+ B: False
+ C: False
+
+Exercise 24:
+  Not a function because this violates Uniqueness
+
+  A: Domain = {1, 2, 3}
+  B: Range = {a, b, c}
+
+Exercise 25:
+  A: Function for Domain ℝ but not 0 and Range ℝ but not 0
+  B: Function with domain and range for all positive numbers
+  C: Function with domain and range for all positive numbers
+  D: Function for domain all positive numbers and range ℝ
+  E: Function for domain and range of ℕ
+  F: Function for domain and range of Z
+  G: Function for Z except {-1, 0, 1}
+
+Exercise 26:
+  A:
+  Range Domain = R R 
+  Inverse Domain range = R R
+
+  y = 3x + 1
+  x = (y-1)/3
