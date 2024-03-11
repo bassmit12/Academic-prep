@@ -7,7 +7,7 @@
 ;(declare-const truckAmount Int)
 
 (define-fun trucks((nuzzlesAmount Int)(prittlesAmount Int)(skipplesAmount Int)(crottlesAmount Int)(dupplesAmount Int)(truckAmount Int)) Bool
-    ; Should run 8 times
+    ; Should run 6 times
         (and (<= 8000
             (+
             (* nuzzlesAmount 800)
