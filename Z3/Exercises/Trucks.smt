@@ -18,7 +18,7 @@
             (nuzzles 6)
         )
     )
-    (>= 1
+    (<= 1
         (+
             (prittles 1)
             (prittles 2)
@@ -178,6 +178,19 @@
             (dupples 6)
         )
     )
+    ; cant have negative amount on a truck
+    (and
+        (>= (nuzzles 1) 0) (>= (nuzzles 2) 0) (>= (nuzzles 3) 0) (>= (nuzzles 4) 0) (>= (nuzzles 5) 0) (>= (nuzzles 6) 0)
+        (>= (prittles 1) 0) (>= (prittles 2) 0) (>= (prittles 3) 0) (>= (prittles 4) 0) (>= (prittles 5) 0) (>= (prittles 6) 0)
+        (>= (skipples 1) 0) (>= (skipples 2) 0) (>= (skipples 3) 0) (>= (skipples 4) 0) (>= (skipples 5) 0) (>= (skipples 6) 0)
+        (>= (crottles 1) 0) (>= (crottles 2) 0) (>= (crottles 3) 0) (>= (crottles 4) 0) (>= (crottles 5) 0) (>= (crottles 6) 0)
+        (>= (dupples 1) 0) (>= (dupples 2) 0) (>= (dupples 3) 0) (>= (dupples 4) 0) (>= (dupples 5) 0) (>= (dupples 6) 0)
+    )
+    ; no 2 nuzzles may be on the same truck
+    (and
+        (< (nuzzles 1) 2) (< (nuzzles 2) 2) (< (nuzzles 3) 2) (< (nuzzles 4) 2) (< (nuzzles 5) 2) (< (nuzzles 6) 2)
+    )
+    ; only 2 trucks can carry skipples
 ))
 
 
