@@ -7,6 +7,7 @@
 
 
 (assert (and
+    ; there are a given amount of nuzzles etc...
     (= 4
         (+
             (nuzzles 1)
@@ -61,6 +62,7 @@
         )
 
     )
+    ; each truck can only carry 8000kg or less
     (<= 8000
         (+
             (* 800 (nuzzles 1))
@@ -121,6 +123,7 @@
             
         )
     )
+    ;8 pellets on each truck
     (<= 8
         (+
             (nuzzles 1)
@@ -175,12 +178,19 @@
             (dupples 6)
         )
     )
-    
 ))
 
 
 
 
 (check-sat)
-(get-value ((nuzzles 1)(prittles 1)(skipples 1)(crottles 1)(dupples 1)))
-
+(get-value 
+    (
+        (nuzzles 1) (prittles 1) (skipples 1) (crottles 1) (dupples 1)
+        (nuzzles 2) (prittles 2) (skipples 2) (crottles 2) (dupples 2)
+        (nuzzles 3) (prittles 3) (skipples 3) (crottles 3) (dupples 3)
+        (nuzzles 4) (prittles 4) (skipples 4) (crottles 4) (dupples 4)
+        (nuzzles 5) (prittles 5) (skipples 5) (crottles 5) (dupples 5)
+        (nuzzles 6) (prittles 6) (skipples 6) (crottles 6) (dupples 6)
+    )
+)
