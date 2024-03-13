@@ -191,6 +191,16 @@
         (< (nuzzles 1) 2) (< (nuzzles 2) 2) (< (nuzzles 3) 2) (< (nuzzles 4) 2) (< (nuzzles 5) 2) (< (nuzzles 6) 2)
     )
     ; only 2 trucks can carry skipples
+    (<= 2
+        (+
+            (ite (> (skipples 1) 0) 1 0)
+            (ite (> (skipples 2) 0) 1 0)
+            (ite (> (skipples 3) 0) 1 0)
+            (ite (> (skipples 4) 0) 1 0)
+            (ite (> (skipples 5) 0) 1 0)
+            (ite (> (skipples 6) 0) 1 0)
+        )
+    )
 ))
 
 
