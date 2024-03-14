@@ -23,9 +23,14 @@
     )
 )
 
-(assert (coinCombinations 20))
-(assert (coinCombinations 23))
-(assert (coinCombinations 29))
+(assert 
+    (and
+        (coinCombinations 20)
+        (coinCombinations 23)
+        (coinCombinations 29)
+    )
+)
+
 
 
 (assert 
