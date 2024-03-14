@@ -1,11 +1,9 @@
-; Longest Path ()
+
 ; Eight points are positioned in a circle at regular distances from eachother. We'll walk along
 ; the points, walking from one point to another, in such a way that:
 ; we never walk across the same point pair more than once, in either direction
 ; we never walk from a point to one of its two direct neighbouring points
-; Let Z3 find a walking path that satisfies the above constraints and is of maximal length. 
 
-; we declare a function point (i, j) where 'i' is the points position and j is the next point you should go to.
 (declare-fun point (Int) Int)
 
 ; start cannot be end and start + 1 or start -1 
