@@ -8,41 +8,46 @@
 
 (define-fun balance ((lowerRange Int) (upperRange Int)) Bool
     (forall ((load Int))
-        ; a b c d are the amount of times a weight is used
-        (exists ((a Int) (b Int) (c Int) (d Int))
-            (and
-                ; no negative weights
-                (> (weight 1) 0)
-                (> (weight 2) 0)
-                (> (weight 3) 0)
-                (> (weight 4) 0)
-                
-                ; no negative amount of weights
-                (>= a 0)
-                (>= b 0)
-                (>= c 0)
-                (>= d 0)
+        (and 
+            ; load is every value between lower and upper range
+            (>= load lowerRange)
+            (<= load upperRange)
+            ; a b c d are the amount of times a weight is used
+            (exists ((a Int) (b Int) (c Int) (d Int))
+                (and      
+                    ; no negative amount of weights
+                    (>= a 0)
+                    (>= b 0)
+                    (>= c 0)
+                    (>= d 0)
 
-                ; load is every value between lower and upper range
-                (>= load lowerRange)
-                (<= load upperRange)
-
-                ; can only use 4 weights in total
-                (>= 4 (+ a b c d))
-                
-                (= load (+ 
+                    ; can only use 4 weights in total
+                    (>= 4 (+ a b c d))
+                    
+                    (= load (+ 
                                 (* a (weight 1))
                                 (* b (weight 2))
                                 (* c (weight 3))
                                 (* d (weight 4))
                             )
+                    )
                 )
             )
         )
+        
     )
 )
         
 (assert (balance 1 40))
+(assert 
+    (and
+        ; no negative weights
+        (> (weight 1) 0)
+        (> (weight 2) 0)
+        (> (weight 3) 0)
+        (> (weight 4) 0)
+    )
+)
 
 (check-sat)
 (get-value ((weight 1) (weight 2) (weight 3) (weight 4)))
