@@ -3,27 +3,34 @@
 ; the way up to 40kg. How much should each of the four weights
 ; weigh? 
 
+; Change values from ints to booleans to make it faster
 
 (declare-fun weight (Int) Int)
 
 (define-fun balance ((lowerRange Int) (upperRange Int)) Bool
     (forall ((load Int))
-        (and 
-            ; load is every value between lower and upper range
-            (>= load lowerRange)
-            (<= load upperRange)
+        (implies
+            (and 
+                ; load is every value between lower and upper range
+                (>= load lowerRange)
+                (<= load upperRange)
+            )
             ; a b c d are the amount of times a weight is used
             (exists ((a Int) (b Int) (c Int) (d Int))
                 (and      
-                    ; no negative amount of weights
-                    (>= a 0)
-                    (>= b 0)
-                    (>= c 0)
-                    (>= d 0)
-
-                    ; can only use 4 weights in total
-                    (>= 4 (+ a b c d))
+                    ; negative weights are on the other side
+                    (>= a -1)
+                    (>= b -1)
+                    (>= c -1)
+                    (>= d -1)
                     
+                    ; weight can only be used 0 or 1 time
+                    (<= a 1)
+                    (<= b 1)
+                    (<= c 1)
+                    (<= d 1)
+                    
+
                     (= load (+ 
                                 (* a (weight 1))
                                 (* b (weight 2))
@@ -33,6 +40,7 @@
                     )
                 )
             )
+            
         )
         
     )
@@ -46,9 +54,15 @@
         (> (weight 2) 0)
         (> (weight 3) 0)
         (> (weight 4) 0)
+
+        (> (weight 1) (weight 2))
+        (> (weight 2) (weight 3))
+        (> (weight 3) (weight 4))
     )
+
 )
 
 (check-sat)
+; 1 3 9 27 should be an answer
 (get-value ((weight 1) (weight 2) (weight 3) (weight 4)))
 
