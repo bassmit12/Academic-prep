@@ -90,3 +90,48 @@ countElementInList list element =
             in 
             elementCount + countElementInList xs element  -- Recursively count occurrences of the element in the rest of the list
 
+onlyOneDiffers : List a -> List a -> Bool
+onlyOneDiffers list1 list2 =
+    case (list1, list2) of
+        ([], []) ->
+            False
+
+        ([], _::_) ->
+            True
+
+        (_::_, []) ->
+            True
+
+        (x::xs, y::ys) ->
+            if x /= y then
+                onlyOneDiffersHelper xs ys 1
+            else
+                onlyOneDiffers xs ys
+
+
+onlyOneDiffersHelper : List a -> List a -> Int -> Bool
+onlyOneDiffersHelper list1 list2 count =
+    case (list1, list2) of
+        ([], []) ->
+            count == 1
+
+        ([], _::_) ->
+            count == 1
+
+        (_::_, []) ->
+            count == 1
+
+        (x::xs, y::ys) ->
+            if x /= y then
+                onlyOneDiffersHelper xs ys (count + 1)
+            else
+                onlyOneDiffersHelper xs ys count
+
+runLengthEncoding: Char -> List Char -> (Int, List Char)
+runLengthEncoding char list =
+  case list of 
+  [] -> (0, [])
+
+  x :: xs ->
+    if x == char then 
+
