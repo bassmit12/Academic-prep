@@ -1,4 +1,3 @@
-
 ; Eight points are positioned in a circle at regular distances from eachother. We'll walk along
 ; the points, walking from one point to another, in such a way that:
 ; we never walk across the same point pair more than once, in either direction
@@ -43,8 +42,12 @@
 ; Ensure every point and it's next visited point is unqique
 (assert (distinct (point 1) (point 2) (point 3) (point 4) (point 5) (point 6) (point 7) (point 8)))
 
+
+
 (check-sat)
-(get-value (
-    (point 1) (point 2) (point 3) (point 4) (point 5) (point 6) (point 7) (point 8)
-))
+(get-value 
+    (
+        (point 1) (point 2) (point 3) (point 4) (point 5) (point 6) (point 7) (point 8)
+    )
+)
 

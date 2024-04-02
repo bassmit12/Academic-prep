@@ -1,0 +1,28 @@
+
+Consider a text document in English of any size. It could be as small as a sentence or as big
+as the whole Gothenburg library collection 😊.
+
+Write a function LinearCount(word) that searches this text sequentially and returns the
+number of occurrences of the given word. The count should be case-insensitive. Then also
+write a function BinaryCount(word) that searches this text using a binary tree data
+structure.
+
+For both approaches, implement any setup and breakdown operations you might need
+outside the search functions. This is important because you want to compare the efficiency
+of both approaches, which makes it important to factor out the setup from the searching
+itself. In any case, analyzing the factored out setups is also relevant.
+
+    (a) Present both solutions with all their bells and whistles (see initial note under this
+    “Assignments” section). Make sure that the setup is analyzed separately from the
+    search, especially for their complexity and performance.
+
+    (b) Compare the search performance of both functions. Is there a difference? Can you
+    visualize the difference on a time plot?
+
+    (c) What is the maximum document size your solutions can handle? What kind of
+    problems do you run into?
+
+    (d) Optional: Is the diversity of the document vocabulary of any influence?
+    
+    (e) Optional: Can you think of smart ways to improve the limitations named in (c) of your
+    solutions?
