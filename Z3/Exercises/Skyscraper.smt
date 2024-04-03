@@ -18,13 +18,13 @@
 (define-fun seeTowersFromBottom ((xCoordinate Int)) Int
     (+ 1
         ; can you see the second tower
-        (ite (< (coordinate xCoordinate 2) (coordinate xCoordinate 1)) 1 0)
+        (ite (> (coordinate xCoordinate 4) (coordinate xCoordinate 5)) 1 0)
         ;can see the third tower
-        (ite (and (< (coordinate xCoordinate 3) (coordinate xCoordinate 2)) (< (coordinate xCoordinate 3) (coordinate xCoordinate 1))) 1 0)
+        (ite (and (> (coordinate xCoordinate 3) (coordinate xCoordinate 4)) (> (coordinate xCoordinate 3) (coordinate xCoordinate 5))) 1 0)
         ;can see the fourth tower
-        (ite (and (< (coordinate xCoordinate 4) (coordinate xCoordinate 3)) (< (coordinate xCoordinate 4) (coordinate xCoordinate 2)) (< (coordinate xCoordinate 4) (coordinate xCoordinate 1))) 1 0)
+        (ite (and (> (coordinate xCoordinate 2) (coordinate xCoordinate 5)) (> (coordinate xCoordinate 2) (coordinate xCoordinate 4)) (> (coordinate xCoordinate 2) (coordinate xCoordinate 3))) 1 0)
         ;can see the fifth tower
-        (ite (and (< (coordinate xCoordinate 5) (coordinate xCoordinate 4)) (< (coordinate xCoordinate 5) (coordinate xCoordinate 3)) (< (coordinate xCoordinate 5) (coordinate xCoordinate 2)) (< (coordinate xCoordinate 5) (coordinate xCoordinate 1))) 1 0)
+        (ite (and (> (coordinate xCoordinate 1) (coordinate xCoordinate 5)) (> (coordinate xCoordinate 1) (coordinate xCoordinate 4)) (> (coordinate xCoordinate 1) (coordinate xCoordinate 3)) (> (coordinate xCoordinate 1) (coordinate xCoordinate 2))) 1 0)
     )
     
 )
@@ -45,13 +45,13 @@
 (define-fun seeTowersFromRight ((yCoordinate Int)) Int
     (+ 1
         ; can you see the second tower
-        (ite (< (coordinate 2 yCoordinate) (coordinate 1 yCoordinate)) 1 0)
+        (ite (> (coordinate 4 yCoordinate) (coordinate 5 yCoordinate)) 1 0)
         ; can you see the third tower
-        (ite (and (< (coordinate 3 yCoordinate) (coordinate 2 yCoordinate)) (< (coordinate 3 yCoordinate) (coordinate 1 yCoordinate))) 1 0)
+        (ite (and (> (coordinate 3 yCoordinate) (coordinate 4 yCoordinate)) (> (coordinate 3 yCoordinate) (coordinate 5 yCoordinate))) 1 0)
         ; can you see the fourth tower
-        (ite (and (< (coordinate 4 yCoordinate) (coordinate 3 yCoordinate)) (< (coordinate 4 yCoordinate) (coordinate 2 yCoordinate)) (< (coordinate 4 yCoordinate) (coordinate 1 yCoordinate))) 1 0)
+        (ite (and (> (coordinate 2 yCoordinate) (coordinate 5 yCoordinate)) (> (coordinate 2 yCoordinate) (coordinate 4 yCoordinate)) (> (coordinate 2 yCoordinate) (coordinate 3 yCoordinate))) 1 0)
         ; can you see the fifth tower
-        (ite (and (< (coordinate 5 yCoordinate) (coordinate 4 yCoordinate)) (< (coordinate 5 yCoordinate) (coordinate 3 yCoordinate)) (< (coordinate 5 yCoordinate) (coordinate 2 yCoordinate)) (< (coordinate 5 yCoordinate) (coordinate 1 yCoordinate))) 1 0)
+        (ite (and (> (coordinate 1 yCoordinate) (coordinate 5 yCoordinate)) (> (coordinate 1 yCoordinate) (coordinate 4 yCoordinate)) (> (coordinate 1 yCoordinate) (coordinate 3 yCoordinate)) (> (coordinate 1 yCoordinate) (coordinate 2 yCoordinate))) 1 0)
     )
 )
 
@@ -72,6 +72,7 @@
     )
 )
 
+; each number in column is unique
 (assert 
     (forall ((i Int))
         (implies
@@ -85,6 +86,7 @@
     )
 )
 
+; each number in row is unique
 (assert 
     (forall ((j Int))
         (implies
@@ -98,31 +100,31 @@
     )
 )
 
-
-; See skyscrapers.png
 (assert (= (seeTowersFromLeft 1) 2))
-(assert (= (seeTowersFromLeft 2) 3))
-(assert (= (seeTowersFromLeft 3) 3))
-(assert (= (seeTowersFromLeft 4) 1))
-(assert (= (seeTowersFromLeft 5) 2))
+(assert (= (seeTowersFromLeft 2) 2))
+;(assert (= (seeTowersFromLeft 3) 3))
+(assert (= (seeTowersFromLeft 4) 2))
+;(assert (= (seeTowersFromLeft 5) 2))
 
-(assert (= (seeTowersFromRight 1) 3))
-(assert (= (seeTowersFromRight 2) 1))
-(assert (= (seeTowersFromRight 3) 2))
-(assert (= (seeTowersFromRight 4) 3))
-(assert (= (seeTowersFromRight 5) 2))
+;(assert (= (seeTowersFromRight 1) 3))
+(assert (= (seeTowersFromRight 2) 3))
+;(assert (= (seeTowersFromRight 3) 4))
+;(assert (= (seeTowersFromRight 4) 3))
+;(assert (= (seeTowersFromRight 5) 2))
 
-(assert (= (seeTowersFromTop 1) 2))
-(assert (= (seeTowersFromTop 2) 1))
-(assert (= (seeTowersFromTop 3) 2))
-(assert (= (seeTowersFromTop 4) 2))
-(assert (= (seeTowersFromTop 5) 2))
+;(assert (= (seeTowersFromTop 1) 5))
+;(assert (= (seeTowersFromTop 2) 4))
+;(assert (= (seeTowersFromTop 3) 5))
+(assert (= (seeTowersFromTop 4) 3))
+;(assert (= (seeTowersFromTop 5) 5))
 
-(assert (= (seeTowersFromBottom 1) 2))
-(assert (= (seeTowersFromBottom 2) 5))
-(assert (= (seeTowersFromBottom 3) 3))
+;(assert (= (seeTowersFromBottom 1) 2))
+;(assert (= (seeTowersFromBottom 2) 5))
+(assert (= (seeTowersFromBottom 3) 2))
 (assert (= (seeTowersFromBottom 4) 1))
 (assert (= (seeTowersFromBottom 5) 4))
+
+
 
 (check-sat)
 (echo "Getting values for coordinate (1,1) to (1,5)")
