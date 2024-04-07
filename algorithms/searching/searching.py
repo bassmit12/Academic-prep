@@ -2,7 +2,8 @@ import sys
 import time
 import collections
 import re
-
+import matplotlib.pyplot as plt
+import numpy as np
 
 class TreeNode:
     def __init__(self, value):
@@ -134,7 +135,7 @@ def additional_performance_test():
 
 def large_text_test():
     # Test performance with large text
-    large_text = "word " * 10000
+    large_text = "word " * 100000
     large_words_to_find = ["word"]
     print("\nLarge Text Test:")
     large_linear_word_counts = linear_setup(large_text)
@@ -178,6 +179,45 @@ def empty_text_test():
             print(f"Binary: '{word}' count: {count}")
             break
 
+def plot_time_differences(avg_linear_times, avg_binary_times, word_counts):
+    plt.plot(word_counts, avg_linear_times, label='Linear', marker='o')
+    plt.plot(word_counts, avg_binary_times, label='Binary', marker='o')
+    plt.xlabel('Number of Words')
+    plt.ylabel('Average Time (seconds)')
+    plt.title('Average Time taken for Linear vs Binary search')
+    plt.legend()
+    plt.grid(True)
+    plt.show()
+
+def test_methods(text, words_to_find, num_trials=100):
+    avg_linear_times = []
+    avg_binary_times = []
+    word_counts = []
+    for i in range(1000, 10001, 1000):  # Varying the number of words from 1000 to 10000
+        sub_text = ' '.join(['word']*i)
+        word_counts.append(i)
+        
+        linear_trial_times = []
+        binary_trial_times = []
+        for _ in range(num_trials):
+            linear_start = time.time()
+            linear_word_counts = linear_setup(sub_text)
+            for word in words_to_find:
+                linear_count(word, linear_word_counts)
+            linear_end = time.time()
+            linear_trial_times.append(linear_end - linear_start)
+            
+            binary_start = time.time()
+            binary_root = binary_setup(sub_text)
+            for word in words_to_find:
+                binary_count(word, binary_root)
+            binary_end = time.time()
+            binary_trial_times.append(binary_end - binary_start)
+        
+        avg_linear_times.append(np.mean(linear_trial_times))
+        avg_binary_times.append(np.mean(binary_trial_times))
+
+    return avg_linear_times, avg_binary_times, word_counts
 
 
 if __name__ == "__main__":
@@ -195,3 +235,7 @@ if __name__ == "__main__":
     additional_performance_test()
     large_text_test()
     empty_text_test()
+
+    avg_linear_times, avg_binary_times, word_counts = test_methods(text, words_to_find)
+
+    plot_time_differences(avg_linear_times, avg_binary_times, word_counts)
