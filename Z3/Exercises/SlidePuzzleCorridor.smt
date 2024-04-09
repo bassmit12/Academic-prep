@@ -22,7 +22,7 @@
 
 
 ; Wanted end positions 
-(= (Coin 0 1) 13)
+(= (Coin N 1) 13)
 
 
 ; no 2 coins can be on the same position
@@ -52,18 +52,55 @@
     (and (<= 1 (Coin N i)) (<= (Coin N i) 12)))
 )
 
-; for each N, all coins can move 1 or 0 positions based on their previous position
 (forall ((N Int))
     (forall ((i Int))
-        (or
-            (= (abs (- (select Coin N i) (select Coin (- N 1) i))) 0) ; Coin doesn't move
-            (= (abs (- (select Coin N i) (select Coin (- N 1) i))) 1) ; Coin moves by 1 position
+        (and
+            ; From position 1 you can move to position 1 or 2
+            (or
+                (and (= (Coin N i) 1) (= (Coin (+ N 1) i) 1))
+                (and (= (Coin N i) 1) (= (Coin (+ N 1) i) 2))
+            )
+            ; From position 2 you can move to position 1, 2, 3
+            (or
+                (and (= (Coin N i) 2) (= (Coin (+ N 1) i) 1))
+                (and (= (Coin N i) 2) (= (Coin (+ N 1) i) 2))
+                (and (= (Coin N i) 2) (= (Coin (+ N 1) i) 3))
+            )
+            ; From position 3 you can move to position 2, 3, 4
+            (or
+                (and (= (Coin N i) 3) (= (Coin (+ N 1) i) 2))
+                (and (= (Coin N i) 3) (= (Coin (+ N 1) i) 3))
+                (and (= (Coin N i) 3) (= (Coin (+ N 1) i) 4))
+            )
+            ; From position 4 you can move to position 3, 4, 5, 6
+            (or
+                (and (= (Coin N i) 4) (= (Coin (+ N 1) i) 3))
+                (and (= (Coin N i) 4) (= (Coin (+ N 1) i) 4))
+                (and (= (Coin N i) 4) (= (Coin (+ N 1) i) 5))
+                (and (= (Coin N i) 4) (= (Coin (+ N 1) i) 6))
+            )
+            ; From position 5 you can move to position 4, 5 
+            (or
+                (and (= (Coin N i) 5) (= (Coin (+ N 1) i) 4))
+                (and (= (Coin N i) 5) (= (Coin (+ N 1) i) 5))
+                
+            )
+            ; From position 6 you can move to position 4, 6, 7
+            (or
+                (and (= (Coin N i) 6) (= (Coin (+ N 1) i) 4))
+                (and (= (Coin N i) 6) (= (Coin (+ N 1) i) 6))
+                (and (= (Coin N i) 6) (= (Coin (+ N 1) i) 7))
+            )
         )
+        
     )
 )
 
+
+
 ;restrict the search to at most 10 steps, to prevent Z3 from searching forever
-(<= 0 N 15)
+(<= 0 N 30)
+
 
 ))
 
