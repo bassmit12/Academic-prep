@@ -32,23 +32,28 @@
 
 ; Only 1 coin can move each N
 (forall ((N Int))
-    (= 1 (+
-            (ite (= (Coin N 1) (Coin (+ N 1) 1)) 0 1)
-            (ite (= (Coin N 2) (Coin (+ N 1) 2)) 0 1)
-            (ite (= (Coin N 3) (Coin (+ N 1) 3)) 0 1)
-            (ite (= (Coin N 4) (Coin (+ N 1) 4)) 0 1)
-            (ite (= (Coin N 5) (Coin (+ N 1) 5)) 0 1)
-            (ite (= (Coin N 6) (Coin (+ N 1) 6)) 0 1)
-            (ite (= (Coin N 7) (Coin (+ N 1) 7)) 0 1)
-            (ite (= (Coin N 8) (Coin (+ N 1) 8)) 0 1)
-            (ite (= (Coin N 9) (Coin (+ N 1) 9)) 0 1)
+    (=> 
+        (<= 1 N)
+        (= 1 (+
+            (ite (= (Coin N 1) (Coin (- N 1) 1)) 0 1)
+            (ite (= (Coin N 2) (Coin (- N 1) 2)) 0 1)
+            (ite (= (Coin N 3) (Coin (- N 1) 3)) 0 1)
+            (ite (= (Coin N 4) (Coin (- N 1) 4)) 0 1)
+            (ite (= (Coin N 5) (Coin (- N 1) 5)) 0 1)
+            (ite (= (Coin N 6) (Coin (- N 1) 6)) 0 1)
+            (ite (= (Coin N 7) (Coin (- N 1) 7)) 0 1)
+            (ite (= (Coin N 8) (Coin (- N 1) 8)) 0 1)
+            (ite (= (Coin N 9) (Coin (- N 1) 9)) 0 1)
+            )
         )
     )
 )
 
 ; Assert to what position you can move the following turn based on your current position
 (forall ((N Int))
-    (forall ((i Int))
+    (=>
+        (<= 1 N)
+        (forall ((i Int))
         (=> 
             (and (>= i 1)(<= i 9))
             ; we only have 9 coins so not all 12 positions can contain a coin and thus be true
@@ -57,44 +62,44 @@
                     (ite
                         ; From position 1 you can move to position 1 or 2
                         (or
-                            (and (= (Coin N i) 1) (= (Coin (+ N 1) i) 1))
-                            (and (= (Coin N i) 1) (= (Coin (+ N 1) i) 2))
+                            (and (= (Coin N i) 1) (= (Coin (- N 1) i) 1))
+                            (and (= (Coin N i) 1) (= (Coin (- N 1) i) 2))
                         ) 
                     1 0)
 
                     (ite 
                         ; From position 2 you can move to position 1, 2, 3
                         (or
-                            (and (= (Coin N i) 2) (= (Coin (+ N 1) i) 1))
-                            (and (= (Coin N i) 2) (= (Coin (+ N 1) i) 2))
-                            (and (= (Coin N i) 2) (= (Coin (+ N 1) i) 3))
+                            (and (= (Coin N i) 2) (= (Coin (- N 1) i) 1))
+                            (and (= (Coin N i) 2) (= (Coin (- N 1) i) 2))
+                            (and (= (Coin N i) 2) (= (Coin (- N 1) i) 3))
                         ) 
                     1 0)
 
                     (ite 
                         ; From position 3 you can move to position 2, 3, 4
                         (or
-                            (and (= (Coin N i) 3) (= (Coin (+ N 1) i) 2))
-                            (and (= (Coin N i) 3) (= (Coin (+ N 1) i) 3))
-                            (and (= (Coin N i) 3) (= (Coin (+ N 1) i) 4))
+                            (and (= (Coin N i) 3) (= (Coin (- N 1) i) 2))
+                            (and (= (Coin N i) 3) (= (Coin (- N 1) i) 3))
+                            (and (= (Coin N i) 3) (= (Coin (- N 1) i) 4))
                         )
                     1 0)
 
                     (ite 
                         ; From position 4 you can move to position 3, 4, 5, 6
                         (or
-                            (and (= (Coin N i) 4) (= (Coin (+ N 1) i) 3))
-                            (and (= (Coin N i) 4) (= (Coin (+ N 1) i) 4))
-                            (and (= (Coin N i) 4) (= (Coin (+ N 1) i) 5))
-                            (and (= (Coin N i) 4) (= (Coin (+ N 1) i) 6))
+                            (and (= (Coin N i) 4) (= (Coin (- N 1) i) 3))
+                            (and (= (Coin N i) 4) (= (Coin (- N 1) i) 4))
+                            (and (= (Coin N i) 4) (= (Coin (- N 1) i) 5))
+                            (and (= (Coin N i) 4) (= (Coin (- N 1) i) 6))
                         )
                     1 0)
 
                     (ite 
                         ; From position 5 you can move to position 4, 5 
                         (or
-                            (and (= (Coin N i) 5) (= (Coin (+ N 1) i) 4))
-                            (and (= (Coin N i) 5) (= (Coin (+ N 1) i) 5))
+                            (and (= (Coin N i) 5) (= (Coin (- N 1) i) 4))
+                            (and (= (Coin N i) 5) (= (Coin (- N 1) i) 5))
                             
                         )
                     1 0)
@@ -102,81 +107,82 @@
                     (ite 
                         ; From position 6 you can move to position 4, 6, 7
                         (or
-                            (and (= (Coin N i) 6) (= (Coin (+ N 1) i) 4))
-                            (and (= (Coin N i) 6) (= (Coin (+ N 1) i) 6))
-                            (and (= (Coin N i) 6) (= (Coin (+ N 1) i) 7))
+                            (and (= (Coin N i) 6) (= (Coin (- N 1) i) 4))
+                            (and (= (Coin N i) 6) (= (Coin (- N 1) i) 6))
+                            (and (= (Coin N i) 6) (= (Coin (- N 1) i) 7))
                         )
                     1 0)
 
                     (ite 
                         ; From position 7 you can move to position 6, 7, 8, 9
                         (or
-                            (and (= (Coin N i) 7) (= (Coin (+ N 1) i) 6))
-                            (and (= (Coin N i) 7) (= (Coin (+ N 1) i) 7))
-                            (and (= (Coin N i) 7) (= (Coin (+ N 1) i) 8))
-                            (and (= (Coin N i) 7) (= (Coin (+ N 1) i) 9))
+                            (and (= (Coin N i) 7) (= (Coin (- N 1) i) 6))
+                            (and (= (Coin N i) 7) (= (Coin (- N 1) i) 7))
+                            (and (= (Coin N i) 7) (= (Coin (- N 1) i) 8))
+                            (and (= (Coin N i) 7) (= (Coin (- N 1) i) 9))
                         )
                     1 0)
 
                     (ite 
                         ; From position 8 you can move to position 7, 8 
                         (or
-                            (and (= (Coin N i) 8) (= (Coin (+ N 1) i) 7))
-                            (and (= (Coin N i) 8) (= (Coin (+ N 1) i) 8))
+                            (and (= (Coin N i) 8) (= (Coin (- N 1) i) 7))
+                            (and (= (Coin N i) 8) (= (Coin (- N 1) i) 8))
                         )
                     1 0)
 
                     (ite 
                         ;From position 9 you can move to position 7, 9, 10
                         (or
-                            (and (= (Coin N i) 9) (= (Coin (+ N 1) i) 7))
-                            (and (= (Coin N i) 9) (= (Coin (+ N 1) i) 9))
-                            (and (= (Coin N i) 9) (= (Coin (+ N 1) i) 10))
+                            (and (= (Coin N i) 9) (= (Coin (- N 1) i) 7))
+                            (and (= (Coin N i) 9) (= (Coin (- N 1) i) 9))
+                            (and (= (Coin N i) 9) (= (Coin (- N 1) i) 10))
                         )
                     1 0)
 
                     (ite 
                         ; From position 10 you can move to position 9, 10, 11, 12
                         (or
-                            (and (= (Coin N i) 10) (= (Coin (+ N 1) i) 9))
-                            (and (= (Coin N i) 10) (= (Coin (+ N 1) i) 10))
-                            (and (= (Coin N i) 10) (= (Coin (+ N 1) i) 11))
-                            (and (= (Coin N i) 10) (= (Coin (+ N 1) i) 12))
+                            (and (= (Coin N i) 10) (= (Coin (- N 1) i) 9))
+                            (and (= (Coin N i) 10) (= (Coin (- N 1) i) 10))
+                            (and (= (Coin N i) 10) (= (Coin (- N 1) i) 11))
+                            (and (= (Coin N i) 10) (= (Coin (- N 1) i) 12))
                         )
                     1 0)
 
                     (ite 
                     ; From position 11 you can move to position 10, 11 
                         (or
-                            (and (= (Coin N i) 11) (= (Coin (+ N 1) i) 10))
-                            (and (= (Coin N i) 11) (= (Coin (+ N 1) i) 11))
+                            (and (= (Coin N i) 11) (= (Coin (- N 1) i) 10))
+                            (and (= (Coin N i) 11) (= (Coin (- N 1) i) 11))
                         )
                     1 0)
 
                     (ite
                         ; From position 12 you can move to position 10, 12, 13
                         (or
-                            (and (= (Coin N i) 12) (= (Coin (+ N 1) i) 10))
-                            (and (= (Coin N i) 12) (= (Coin (+ N 1) i) 12))
-                            (and (= (Coin N i) 12) (= (Coin (+ N 1) i) 13))
+                            (and (= (Coin N i) 12) (= (Coin (- N 1) i) 10))
+                            (and (= (Coin N i) 12) (= (Coin (- N 1) i) 12))
+                            (and (= (Coin N i) 12) (= (Coin (- N 1) i) 13))
                         )
                     1 0)
 
                     (ite 
                         ; From position 13 you can move to position 12 or 13
                         (or
-                            (and (= (Coin N i) 13) (= (Coin (+ N 1) i) 12))
-                            (and (= (Coin N i) 13) (= (Coin (+ N 1) i) 13))
+                            (and (= (Coin N i) 13) (= (Coin (- N 1) i) 12))
+                            (and (= (Coin N i) 13) (= (Coin (- N 1) i) 13))
                         )
                     1 0)
                 )  
             )
         )   
     )
+    )
 )
 
 ;restrict the search to at most 10 steps, to prevent Z3 from searching forever
-(<= 0 N 50)
+(<= 0 N 25)
 
 
 ))
