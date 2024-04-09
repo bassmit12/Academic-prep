@@ -4,16 +4,6 @@
 ; timepoint at which the required end-state is reached
 (declare-const N Int)
 
-(define-fun frogOnPosition ((pos Int) (N Int)) Bool
-  (or (= (Frog N 1) pos)
-      (= (Frog N 2) pos)
-      (= (Frog N 3) pos)
-      (= (Frog N 4) pos)
-      (= (Frog N 5) pos)
-      (= (Frog N 6) pos)
-  )
-)
-
 (assert (and 
 
 ; Begin positions of frogs
@@ -138,6 +128,7 @@
     )
 )
 
+; A froog can either sit still or move at max 2 spots
 (forall ((N Int))
     (=> (and (<= 1 N) (<= N 15))
       (and
@@ -162,6 +153,8 @@
       )
     )
 )
+
+
 
 ;restrict the search to at most 10 steps, to prevent Z3 from searching forever
 (<= 0 N 15)

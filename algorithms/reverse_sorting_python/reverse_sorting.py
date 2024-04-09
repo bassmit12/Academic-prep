@@ -41,6 +41,8 @@ def test_reverse():
     reverse(seq, 2)
     assert seq == [3, 2, 1, 4]
 
+
+
 def test_reverse_sort():
     seq = [4, 2, 1, 3]
     reverse_sort(seq)
@@ -95,6 +97,7 @@ def performance_test_reverse_sort():
 def run_tests():
     test_max()
     test_reverse()
+   
     test_reverse_sort()
     test_reverse_sort_edge_cases()
     test_reverse_sort_extreme_inputs
