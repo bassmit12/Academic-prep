@@ -26,9 +26,9 @@
 
 
 ; no 2 coins can be on the same position
-;(forall ((N Int))
-;    (distinct (Coin N 1) (Coin N 2) (Coin N 3) (Coin N 4) (Coin N 5) (Coin N 6)(Coin N 7)(Coin N 8)(Coin N 9))
-;)
+(forall ((N Int))
+    (distinct (Coin N 1) (Coin N 2) (Coin N 3) (Coin N 4) (Coin N 5) (Coin N 6)(Coin N 7)(Coin N 8)(Coin N 9))
+)
 
 ; Only 1 coin can move each N
 (forall ((N Int))
@@ -52,6 +52,7 @@
     (and (<= 1 (Coin N i)) (<= (Coin N i) 12)))
 )
 
+; Assert to what position you can move the following turn based on your current position
 (forall ((N Int))
     (forall ((i Int))
         (and
@@ -91,15 +92,54 @@
                 (and (= (Coin N i) 6) (= (Coin (+ N 1) i) 6))
                 (and (= (Coin N i) 6) (= (Coin (+ N 1) i) 7))
             )
+            ; From position 7 you can move to position 6, 7, 8, 9
+            (or
+                (and (= (Coin N i) 7) (= (Coin (+ N 1) i) 6))
+                (and (= (Coin N i) 7) (= (Coin (+ N 1) i) 7))
+                (and (= (Coin N i) 7) (= (Coin (+ N 1) i) 8))
+                (and (= (Coin N i) 7) (= (Coin (+ N 1) i) 9))
+            )
+            ; From position 8 you can move to position 7, 8 
+            (or
+                (and (= (Coin N i) 8) (= (Coin (+ N 1) i) 7))
+                (and (= (Coin N i) 8) (= (Coin (+ N 1) i) 8))
+            )
+            ; From position 9 you can move to position 7, 9, 10
+            (or
+                (and (= (Coin N i) 9) (= (Coin (+ N 1) i) 7))
+                (and (= (Coin N i) 9) (= (Coin (+ N 1) i) 9))
+                (and (= (Coin N i) 9) (= (Coin (+ N 1) i) 10))
+            )
+            ; From position 10 you can move to position 9, 10, 11, 12
+            (or
+                (and (= (Coin N i) 10) (= (Coin (+ N 1) i) 9))
+                (and (= (Coin N i) 10) (= (Coin (+ N 1) i) 10))
+                (and (= (Coin N i) 10) (= (Coin (+ N 1) i) 11))
+                (and (= (Coin N i) 10) (= (Coin (+ N 1) i) 12))
+            )
+            ; From position 11 you can move to position 10, 11 
+            (or
+                (and (= (Coin N i) 11) (= (Coin (+ N 1) i) 10))
+                (and (= (Coin N i) 11) (= (Coin (+ N 1) i) 11))
+            )
+            ; From position 12 you can move to position 10, 12, 13
+            (or
+                (and (= (Coin N i) 12) (= (Coin (+ N 1) i) 10))
+                (and (= (Coin N i) 12) (= (Coin (+ N 1) i) 12))
+                (and (= (Coin N i) 12) (= (Coin (+ N 1) i) 13))
+            )
+            ; From position 13 you can move to position 12 or 13
+            (or
+                (and (= (Coin N i) 13) (= (Coin (+ N 1) i) 12))
+                (and (= (Coin N i) 13) (= (Coin (+ N 1) i) 13))
+            )
         )
         
     )
 )
 
-
-
 ;restrict the search to at most 10 steps, to prevent Z3 from searching forever
-(<= 0 N 30)
+(<= 0 N 50)
 
 
 ))
