@@ -11,13 +11,10 @@
 (= (Coin 0 2) 2)
 (= (Coin 0 3) 3)
 (= (Coin 0 4) 4)
-; position 5 is above 4
 (= (Coin 0 5) 6)
 (= (Coin 0 6) 7)
-; position 8 is above 7
 (= (Coin 0 7) 9)
 (= (Coin 0 8) 10)
-; position 11 is above 10
 (= (Coin 0 9) 12)
 
 
@@ -29,7 +26,7 @@
 (forall ((t Int))
     (=> 
         (and (>= t 1)(<= t 25))
-        (distinct (Coin N 1) (Coin N 2) (Coin N 3) (Coin N 4) (Coin N 5) (Coin N 6)(Coin N 7)(Coin N 8)(Coin N 9))
+        (distinct (Coin t 1) (Coin t 2) (Coin t 3) (Coin t 4) (Coin t 5) (Coin t 6)(Coin t 7)(Coin t 8)(Coin t 9))
     )
 )
 
