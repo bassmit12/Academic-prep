@@ -108,6 +108,7 @@
 ))
 
 (check-sat)
+(get-value (N))
 (get-value 
     (
         (Coin 0 1)

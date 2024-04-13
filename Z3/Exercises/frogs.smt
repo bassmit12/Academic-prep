@@ -128,28 +128,13 @@
     )
 )
 
-; A froog can either sit still or move at max 2 spots
-(forall ((N Int))
-    (=> (and (<= 1 N) (<= N 15))
+; A frog can either sit still or move at max 2 spots
+(forall ((N Int)(i Int))
+    (=> (and (<= 1 N) (<= N 15) (<= 1 i) (<= i 6))
       (and
         (or
-          (<= (abs (- (Frog (+ N 1) 1) (Frog N 1))) 2)
-          (= (Frog (+ N 1) 1) (Frog N 1)))
-        (or
-          (<= (abs (- (Frog (+ N 1) 2) (Frog N 2))) 2)
-          (= (Frog (+ N 1) 2) (Frog N 2)))
-        (or
-          (<= (abs (- (Frog (+ N 1) 3) (Frog N 3))) 2)
-          (= (Frog (+ N 1) 3) (Frog N 3)))
-        (or
-          (<= (abs (- (Frog (+ N 1) 4) (Frog N 4))) 2)
-          (= (Frog (+ N 1) 4) (Frog N 4)))
-        (or
-          (<= (abs (- (Frog (+ N 1) 5) (Frog N 5))) 2)
-          (= (Frog (+ N 1) 5) (Frog N 5)))
-        (or
-          (<= (abs (- (Frog (+ N 1) 6) (Frog N 6))) 2)
-          (= (Frog (+ N 1) 6) (Frog N 6)))
+          (<= (abs (- (Frog (+ N 1) i) (Frog N i))) 2)
+          (= (Frog (+ N 1) i) (Frog N i)))
       )
     )
 )
