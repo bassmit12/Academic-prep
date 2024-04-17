@@ -22,7 +22,6 @@
 ; Wanted end positions 
 (= (Coin N 1) 13)
 
-
 ; no 2 coins can be on the same position
 (forall ((t Int))
     (=> 
@@ -59,43 +58,43 @@
         )
         (or 
         ; If the coin is in position 1, it can move to position 1 or 2
-        (and (= (Coin (- t 1) i) 1) (or (= (Coin t i) 1) (= (Coin t i) 2)))
+        (and (= (Coin t i) 1) (or (= (Coin (- t 1) i) 1) (= (Coin (- t 1) i) 2)))
         
         ; If the coin is in position 2, it can move to position 1, 2, or 3
-        (and (= (Coin (- t 1) i) 2) (or (= (Coin t i) 1) (= (Coin t i) 2) (= (Coin t i) 3)))
+        (and (= (Coin t i) 2) (or (= (Coin (- t 1) i) 1) (= (Coin (- t 1) i) 2) (= (Coin (- t 1) i) 3)))
         
         ; If the coin is in position 3, it can move to position 2, 3, or 4
-        (and (= (Coin (- t 1) i) 3) (or (= (Coin t i) 2) (= (Coin t i) 3) (= (Coin t i) 4)))
+        (and (= (Coin t i) 3) (or (= (Coin (- t 1) i) 2) (= (Coin (- t 1) i) 3) (= (Coin (- t 1) i) 4)))
         
         ; If the coin is in position 4, it can move to position 3, 4, or 6
-        (and (= (Coin (- t 1) i) 4) (or (= (Coin t i) 3) (= (Coin t i) 4) (= (Coin t i) 6)))
+        (and (= (Coin t i) 4) (or (= (Coin (- t 1) i) 3) (= (Coin (- t 1) i) 4) (= (Coin (- t 1) i) 6)))
         
         ; If the coin is in position 5, it can move to position 4, 5
-        (and (= (Coin (- t 1) i) 5) (or (= (Coin t i) 4) (= (Coin t i) 5)))
+        (and (= (Coin t i) 5) (or (= (Coin (- t 1) i) 4) (= (Coin (- t 1) i) 5)))
         
         ; If the coin is in position 6, it can move to position 4, 6, or 7
-        (and (= (Coin (- t 1) i) 6) (or (= (Coin t i) 4) (= (Coin t i) 6) (= (Coin t i) 7)))
+        (and (= (Coin t i) 6) (or (= (Coin (- t 1) i) 4) (= (Coin (- t 1) i) 6) (= (Coin (- t 1) i) 7)))
         
         ; If the coin is in position 7, it can move to position 6, 7, 8, or 9
-        (and (= (Coin (- t 1) i) 7) (or (= (Coin t i) 6) (= (Coin t i) 7) (= (Coin t i) 8) (= (Coin t i) 9)))
+        (and (= (Coin t i) 7) (or (= (Coin (- t 1) i) 6) (= (Coin (- t 1) i) 7) (= (Coin (- t 1) i) 8) (= (Coin (- t 1) i) 9)))
         
         ; If the coin is in position 8, it can move to position 7, 8
-        (and (= (Coin (- t 1) i) 8) (or (= (Coin t i) 7) (= (Coin t i) 8)))
+        (and (= (Coin t i) 8) (or (= (Coin (- t 1) i) 7) (= (Coin (- t 1) i) 8)))
         
         ; If the coin is in position 9, it can move to position 7, 9, or 10
-        (and (= (Coin (- t 1) i) 9) (or (= (Coin t i) 7) (= (Coin t i) 9) (= (Coin t i) 10)))
+        (and (= (Coin t i) 9) (or (= (Coin (- t 1) i) 7) (= (Coin (- t 1) i) 9) (= (Coin (- t 1) i) 10)))
         
         ; If the coin is in position 10, it can move to position 9, 10, 11 or 12
-        (and (= (Coin (- t 1) i) 10) (or (= (Coin t i) 9) (= (Coin t i) 10) (= (Coin t i) 11) (= (Coin t i) 12)))
+        (and (= (Coin t i) 10) (or (= (Coin (- t 1) i) 9) (= (Coin (- t 1) i) 10) (= (Coin (- t 1) i) 11) (= (Coin (- t 1) i) 12)))
         
         ; If the coin is in position 11, it can move to position 10, 11
-        (and (= (Coin (- t 1) i) 11) (or (= (Coin t i) 10) (= (Coin t i) 11)))
+        (and (= (Coin t i) 11) (or (= (Coin (- t 1) i) 10) (= (Coin (- t 1) i) 11)))
         
         ; If the coin is in position 12, it can move to position 10, 12, or 13
-        (and (= (Coin (- t 1) i) 12) (or (= (Coin t i) 10) (= (Coin t i) 12) (= (Coin t i) 13)))
+        (and (= (Coin t i) 12) (or (= (Coin (- t 1) i) 10) (= (Coin (- t 1) i) 12) (= (Coin (- t 1) i) 13)))
         
         ; If the coin is in position 13, it can move to position 12 or 13
-        (and (= (Coin (- t 1) i) 13) (or (= (Coin t i) 12) (= (Coin t i) 13)))
+        (and (= (Coin t i) 13) (or (= (Coin (- t 1) i) 12) (= (Coin (- t 1) i) 13)))
       )
 
     )
