@@ -18,14 +18,14 @@
     (= (Number 0 1) 8 )
 
     ; Wanted end positions of numbers (N=16 found by 1 2 4)
-    (= (Number N 1) 1)
-    (= (Number N 2) 2)
-    (= (Number N 3) 3)
+    ;(= (Number N 1) 1)
+    ;(= (Number N 2) 2)
+    ;(= (Number N 3) 3)
     (= (Number N 4) 4 )
     (= (Number N 5) 5 )
-    (= (Number N 6) 6 )
-    (= (Number N 7) 7 )
-    (= (Number N 8) 8 )
+    ;(= (Number N 6) 6 )
+    ;(= (Number N 7) 7 )
+    ;(= (Number N 8) 8 )
 
     ; 2 numbers cant be on the same position
     (forall ((t Int))
