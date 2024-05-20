@@ -1,11 +1,13 @@
 module ExamPractice exposing (..)
+import Html exposing (a)
+import Browser exposing (element)
 
 factorial : Int -> Int
 factorial x =
   if x == 0 then
         1
   else
-    x * factorial(x-1)
+    x * factorial(x - 1)
 
 
 fibonacci : Int -> Int
@@ -127,11 +129,167 @@ onlyOneDiffersHelper list1 list2 count =
             else
                 onlyOneDiffersHelper xs ys count
 
-runLengthEncoding: Char -> List Char -> (Int, List Char)
-runLengthEncoding char list =
-  case list of 
-  [] -> (0, [])
+firstElem  : List a -> Maybe a
+firstElem list1 =
+    case list1 of
+        [] -> Nothing
+        x :: _ -> Just x
 
-  x :: xs ->
-    if x == char then 
+firstTwoElems : List a -> Maybe (a, a)
+firstTwoElems list =
+    case list of
+        x :: y :: _ -> Just (x, y)
+        _ -> Nothing
 
+isShorterThen : List a -> Int -> Bool 
+isShorterThen list1 amount =
+    case list1 of
+        [] -> amount > 0
+        _ :: xs ->
+            if amount <= 0 then
+                False 
+            else 
+                isShorterThen xs (amount - 1)
+
+-- elemtAt 3 ['a', 'e', 'i', 'o', 'u']
+-- 3 ['a', 'e', 'i', 'o', 'u']
+-- 2 ['e', 'i', 'o', 'u']
+-- 1 ['i', 'o', 'u']
+-- 0 ['o', 'u']
+
+elemAt: Int -> List a -> Maybe a 
+elemAt index list =
+    if index < 0 then
+        Nothing
+    else
+        case list of 
+            [] -> Nothing
+            x :: xs ->
+                if index == 0 then
+                    Just x
+                else 
+                    elemAt (index - 1) xs
+
+sumList: List Int -> Int
+sumList list =
+    case list of
+        [] -> 0
+        [x] -> x 
+
+        x :: xs ->
+            x + sumList xs
+
+-- grades = [ ("Anna", 8), ("Jane", 6), ("Jane", 7), ("Paul", 6), ("Anna", 7), ("Jane", 9) ]
+report : List (String, Int) -> String -> Maybe (String, List Int, Float)
+report grades studentName =
+    let
+        -- Extract grades for the specified student
+        studentGrades =
+            List.filter (\(name, _) -> name == studentName) grades
+                |> List.map Tuple.second
+
+        -- Calculate the average grade
+        averageGrade : List Int -> Float
+        averageGrade gradesList =
+            if List.isEmpty gradesList then
+                0
+            else
+                List.sum (List.map toFloat gradesList) / toFloat (List.length gradesList)
+    in
+    if List.isEmpty studentGrades then
+        Nothing
+    else
+        Just (studentName, studentGrades, averageGrade studentGrades)
+
+lastA : List a -> Maybe a 
+lastA list =
+    case list of 
+        [] -> Nothing
+        [x] -> Just x 
+        x :: xs ->
+            lastA xs
+
+-- Implementation of lastB using List.foldl
+lastB : List a -> Maybe a
+lastB list =
+    List.foldl accLeft initLeft list
+
+accLeft : a -> Maybe a -> Maybe a
+accLeft x _ = Just x
+
+initLeft : Maybe a
+initLeft = Nothing
+
+-- Implementation of lastC using List.foldr
+lastC : List a -> Maybe a
+lastC list =
+    List.foldr accRight initRight list
+
+accRight : a -> Maybe a -> Maybe a
+accRight x acc =
+    case acc of
+        Nothing -> Just x
+        Just _ -> acc
+
+initRight : Maybe a
+initRight = Nothing
+
+flattenList : List (List a) -> List a
+flattenList list =
+    case list of 
+        [] -> []
+        [x] -> x
+        x :: xs ->
+            List.append x (flattenList xs)
+
+type Tree a
+    = Empty 
+    | Node a (Tree a) (Tree a)
+
+depthOfThree : Tree a -> Int
+depthOfThree tree = 
+    case tree of
+        Empty -> 0
+        Node _ left right ->
+            1 + max (depthOfThree left) (depthOfThree right)
+
+tree1 : Tree Int
+tree1 = Node 1 Empty Empty
+
+tree2 : Tree Int
+tree2 = Node 1 (Node 2 Empty Empty) Empty
+
+tree3 : Tree Int
+tree3 = Node 1 (Node 2 Empty (Node 3 Empty Empty)) (Node 4 Empty Empty)
+
+tree4 : Tree Int
+tree4 = Empty
+
+tree5 : Tree Int
+tree5 = Node 1 (Node 2 (Node 3 Empty Empty) (Node 4 Empty Empty)) (Node 5 Empty Empty)
+
+elemExists : a -> List a -> Bool
+elemExists target list =
+    case list of
+        [] -> False
+        x :: xs -> (x == target) || elemExists target xs
+
+mapList : (a -> b) -> List a -> List b
+mapList f list =
+    case list of
+        [] -> []
+        x :: xs -> f x :: mapList f xs
+
+longestSubList : List (List a) -> Maybe (List a)
+longestSubList list =
+    case list of
+        [] -> Nothing
+        [x] -> Just x 
+        x :: xs ->
+            case longestSubList xs of
+                Nothing -> Just x
+                Just longest ->
+                    if List.length x > List.length longest then
+                        Just x
+                    else
+                        Just longest
