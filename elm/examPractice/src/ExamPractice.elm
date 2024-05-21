@@ -293,3 +293,48 @@ longestSubList list =
                         Just x
                     else
                         Just longest
+                    
+mergeSorted : List comparable -> List comparable -> List comparable
+mergeSorted list1 list2 =
+    case (list1, list2) of
+        ([], _) -> list2
+        (_, []) -> list1
+        (x :: xs, y :: ys) ->
+            if x <= y then
+                x :: mergeSorted xs list2
+            else
+                y :: mergeSorted list1 ys
+            
+
+zipLists : List a -> List b -> List (a, b)
+zipLists list1 list2 =
+    case (list1, list2) of
+        ([], _) -> []
+        (_, []) -> []
+        (x :: xs, y :: ys) -> (x, y) :: zipLists xs ys
+
+inOrder : Tree a -> List a
+inOrder tree =
+    case tree of
+        Empty -> []
+        Node value left right ->
+            inOrder left ++ [value] ++ inOrder right
+
+isBalanced : Tree a -> Bool
+isBalanced tree =
+    let
+        heightAndBalance t =
+            case t of
+                Empty -> (0, True)
+                Node _ left right ->
+                    let
+                        (leftHeight, leftBalanced) = heightAndBalance left
+                        (rightHeight, rightBalanced) = heightAndBalance right
+                    in
+                    ( 1 + max leftHeight rightHeight
+                    , leftBalanced && rightBalanced && abs (leftHeight - rightHeight) <= 1
+                    )
+    in
+    snd (heightAndBalance tree)
+
+
