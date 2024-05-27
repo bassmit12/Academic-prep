@@ -1,11 +1,9 @@
 import numpy as np
-import matplotlib.pyplot as plt
-import networkx as nx
 
 class LinearMDP:
-    def __init__(self, num_states, slip_prob, cost_of_living, discount_factor=0.9, start_state='S1'):
+    def __init__(self, num_states, slip_prob, cost_of_living, terminal_states, discount_factor=0.9, start_state='S1'):
         self.states = [f'S{i}' for i in range(num_states)]
-        self.terminal_states = {'S0': -1, f'S{num_states-1}': 1}
+        self.terminal_states = terminal_states  # Terminal states should be a dictionary with states as keys and rewards as values
         self.actions = ['right']
         self.slip_prob = slip_prob
         self.cost_of_living = cost_of_living
@@ -18,17 +16,19 @@ class LinearMDP:
     def build_transition_probabilities(self):
         transition_probabilities = {s: {'right': {}} for s in self.states}
         for i in range(1, len(self.states) - 1):
-            transition_probabilities[self.states[i]]['right'][self.states[i]] = self.slip_prob
-            transition_probabilities[self.states[i]]['right'][self.states[i + 1]] = 1 - self.slip_prob
+            if self.states[i] not in self.terminal_states:
+                transition_probabilities[self.states[i]]['right'][self.states[i]] = self.slip_prob
+                transition_probabilities[self.states[i]]['right'][self.states[i + 1]] = 1 - self.slip_prob
 
-        transition_probabilities['S0']['right']['S0'] = 1.0  # Terminal state
-        transition_probabilities[f'S{len(self.states) - 1}']['right'][f'S{len(self.states) - 1}'] = 1.0  # Terminal state
+        for terminal_state in self.terminal_states:
+            transition_probabilities[terminal_state]['right'][terminal_state] = 1.0  # Terminal state
+
         return transition_probabilities
 
     def build_rewards(self):
         rewards = {s: {'right': self.cost_of_living} for s in self.states}
-        rewards['S0']['right'] = self.terminal_states['S0']
-        rewards[f'S{len(self.states) - 1}']['right'] = self.terminal_states[f'S{len(self.states) - 1}']
+        for terminal_state, reward in self.terminal_states.items():
+            rewards[terminal_state]['right'] = reward
         return rewards
 
     def get_transition_prob(self, state, action, next_state):
@@ -75,34 +75,15 @@ class LinearMDP:
                 break
         return policy, value_function
 
-def draw_optimal_path(policy, start_state, num_states):
-    G = nx.DiGraph()
-    states = [f'S{i}' for i in range(num_states)]
-    
-    for i in range(1, num_states - 1):
-        G.add_edge(states[i], states[i + 1], action=policy[states[i]])
-    
-    pos = {f'S{i}': (i, 0) for i in range(num_states)}
-    labels = {state: state for state in states}
-    edge_labels = {(u, v): d['action'] for u, v, d in G.edges(data=True)}
-    
-    nx.draw(G, pos, with_labels=True, node_size=2000, node_color='lightblue', font_size=10, font_weight='bold')
-    nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_color='red')
-    
-    plt.title(f"Optimal Path from {start_state}")
-    plt.show()
-
 # Example usage with parameters
 num_states = 5  # Total states including terminal states
 slip_prob = 0.2  # Probability of slipping
 cost_of_living = -0.1  # Cost of living
 start_state = 'S1'  # Define the starting state
+terminal_states = {'S0': -1, 'S4': 1}  # Custom terminal states with rewards
 
-linear_mdp = LinearMDP(num_states, slip_prob, cost_of_living, start_state=start_state)
+linear_mdp = LinearMDP(num_states, slip_prob, cost_of_living, terminal_states, start_state=start_state)
 policy, value_function = linear_mdp.policy_iteration()
 print("Optimal Policy:", policy)
 print("Value Function:", value_function)
 print("Starting State:", linear_mdp.start_state)
-
-# Draw the optimal path
-draw_optimal_path(policy, start_state, num_states)
