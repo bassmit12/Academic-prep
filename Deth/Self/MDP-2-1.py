@@ -1,4 +1,6 @@
 import numpy as np
+import matplotlib.pyplot as plt
+import networkx as nx
 
 class LinearMDP:
     def __init__(self, num_states, slip_prob, cost_of_living, discount_factor=0.9, start_state='S1'):
@@ -73,6 +75,23 @@ class LinearMDP:
                 break
         return policy, value_function
 
+def draw_optimal_path(policy, start_state, num_states):
+    G = nx.DiGraph()
+    states = [f'S{i}' for i in range(num_states)]
+    
+    for i in range(1, num_states - 1):
+        G.add_edge(states[i], states[i + 1], action=policy[states[i]])
+    
+    pos = {f'S{i}': (i, 0) for i in range(num_states)}
+    labels = {state: state for state in states}
+    edge_labels = {(u, v): d['action'] for u, v, d in G.edges(data=True)}
+    
+    nx.draw(G, pos, with_labels=True, node_size=2000, node_color='lightblue', font_size=10, font_weight='bold')
+    nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_color='red')
+    
+    plt.title(f"Optimal Path from {start_state}")
+    plt.show()
+
 # Example usage with parameters
 num_states = 5  # Total states including terminal states
 slip_prob = 0.2  # Probability of slipping
@@ -84,4 +103,6 @@ policy, value_function = linear_mdp.policy_iteration()
 print("Optimal Policy:", policy)
 print("Value Function:", value_function)
 print("Starting State:", linear_mdp.start_state)
- 
+
+# Draw the optimal path
+draw_optimal_path(policy, start_state, num_states)
