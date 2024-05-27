@@ -52,7 +52,6 @@ class MDP:
                 break
         return policy, value_function
 
-# Defining the MDP based on the image
 states = ['S0', 'S1', 'S2']
 actions = ['a0', 'a1']
 transition_probabilities = {

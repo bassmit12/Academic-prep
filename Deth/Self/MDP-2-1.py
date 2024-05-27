@@ -1,13 +1,14 @@
 import numpy as np
 
 class LinearMDP:
-    def __init__(self, num_states, slip_prob, cost_of_living, discount_factor=0.9):
+    def __init__(self, num_states, slip_prob, cost_of_living, discount_factor=0.9, start_state='S1'):
         self.states = [f'S{i}' for i in range(num_states)]
         self.terminal_states = {'S0': -1, f'S{num_states-1}': 1}
         self.actions = ['right']
         self.slip_prob = slip_prob
         self.cost_of_living = cost_of_living
         self.discount_factor = discount_factor
+        self.start_state = start_state
 
         self.transition_probabilities = self.build_transition_probabilities()
         self.rewards = self.build_rewards()
@@ -76,8 +77,11 @@ class LinearMDP:
 num_states = 5  # Total states including terminal states
 slip_prob = 0.2  # Probability of slipping
 cost_of_living = -0.1  # Cost of living
+start_state = 'S1'  # Define the starting state
 
-linear_mdp = LinearMDP(num_states, slip_prob, cost_of_living)
+linear_mdp = LinearMDP(num_states, slip_prob, cost_of_living, start_state=start_state)
 policy, value_function = linear_mdp.policy_iteration()
 print("Optimal Policy:", policy)
 print("Value Function:", value_function)
+print("Starting State:", linear_mdp.start_state)
+ 
