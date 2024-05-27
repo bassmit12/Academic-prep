@@ -86,8 +86,8 @@ class GridMDP:
                 break
         return policy, value_function
 
-    def visualize_policy(self, policy):
-        action_map = {'right': (0, 0.3), 'left': (0, -0.3), 'up': (-0.3, 0), 'down': (0.3, 0)}
+    def visualize_optimal_path(self, policy):
+        action_map = {'right': (0, 1), 'left': (0, -1), 'up': (-1, 0), 'down': (1, 0)}
         fig, ax = plt.subplots(figsize=(self.num_cols + 1, self.num_rows + 1))
         ax.set_xlim(-0.5, self.num_cols - 0.5)
         ax.set_ylim(-0.5, self.num_rows - 0.5)
@@ -95,33 +95,30 @@ class GridMDP:
         ax.set_yticks(np.arange(-0.5, self.num_rows, 1))
         ax.grid(True)
 
-        # Draw arrows for each state according to the policy
-        for r in range(self.num_rows):
-            for c in range(self.num_cols):
-                state = (r, c)
-                if state in self.terminal_states:
-                    reward = self.terminal_states[state]
-                    color = 'green' if reward > 0 else 'red'
-                    ax.add_patch(plt.Rectangle((c - 0.5, r - 0.5), 1, 1, color=color, alpha=0.3))
-                    ax.text(c, r, f'T\n{reward}', ha='center', va='center', fontsize=12, fontweight='bold')
-                else:
-                    dr, dc = action_map[policy[state]]
-                    arrow = FancyArrowPatch((c, r), (c + dc, r + dr), mutation_scale=20, color='blue', lw=2)
-                    ax.add_patch(arrow)
-
         # Add row and column numbers
         for r in range(self.num_rows):
             ax.text(-1, r, f'{r}', ha='center', va='center', fontsize=12, fontweight='bold')
         for c in range(self.num_cols):
             ax.text(c, -1, f'{c}', ha='center', va='center', fontsize=12, fontweight='bold')
 
+        # Draw the start state
+        sr, sc = self.start_state
+        ax.add_patch(plt.Rectangle((sc - 0.5, sr - 0.5), 1, 1, color='yellow', alpha=0.3))
+
+        # Draw terminal states
+        for state, reward in self.terminal_states.items():
+            r, c = state
+            color = 'green' if reward > 0 else 'orange'
+            ax.add_patch(plt.Rectangle((c - 0.5, r - 0.5), 1, 1, color=color, alpha=0.3))
+            ax.text(c, r, f'T\n{reward}', ha='center', va='center', fontsize=12, fontweight='bold')
+
         # Draw the optimal path from the start state to a terminal state
         current_state = self.start_state
         while current_state not in self.terminal_states:
             r, c = current_state
             dr, dc = action_map[policy[current_state]]
-            next_state = (r + int(np.sign(dr)), c + int(np.sign(dc)))
-            ax.arrow(c, r, np.sign(dc)*0.8, np.sign(dr)*0.8, head_width=0.2, head_length=0.2, fc='red', ec='red')
+            next_state = (r + dr, c + dc)
+            ax.arrow(c, r, dc, dr, head_width=0.2, head_length=0.2, fc='red', ec='red')
             current_state = next_state
 
         ax.set_xticklabels([])
@@ -147,5 +144,5 @@ print("Optimal Policy:", policy)
 print("Value Function:", value_function)
 print("Starting State:", grid_mdp.start_state)
 
-# Visualize the policy
-grid_mdp.visualize_policy(policy)
+# Visualize the optimal path
+grid_mdp.visualize_optimal_path(policy)
