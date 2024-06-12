@@ -16,8 +16,7 @@ public class ExprParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, INT=9, 
-		WS=10;
+		INT=1, MUL=2, DIV=3, ADD=4, SUB=5, EXP=6, FACT=7, LPAR=8, RPAR=9, WS=10;
 	public static final int
 		RULE_expr = 0;
 	private static String[] makeRuleNames() {
@@ -29,13 +28,14 @@ public class ExprParser extends Parser {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'*'", "'/'", "'+'", "'-'", "'^'", "'!'", "'('", "')'"
+			null, null, "'*'", "'/'", "'+'", "'-'", "'^'", "'!'", "'('", "')'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, null, null, null, null, null, null, null, null, "INT", "WS"
+			null, "INT", "MUL", "DIV", "ADD", "SUB", "EXP", "FACT", "LPAR", "RPAR", 
+			"WS"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -106,6 +106,7 @@ public class ExprParser extends Parser {
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
 		}
+		public TerminalNode FACT() { return getToken(ExprParser.FACT, 0); }
 		public FactorialContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
@@ -115,21 +116,17 @@ public class ExprParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitFactorial(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ExprVisitor ) return ((ExprVisitor<? extends T>)visitor).visitFactorial(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class MulDivContext extends ExprContext {
-		public Token op;
 		public List<ExprContext> expr() {
 			return getRuleContexts(ExprContext.class);
 		}
 		public ExprContext expr(int i) {
 			return getRuleContext(ExprContext.class,i);
 		}
+		public TerminalNode MUL() { return getToken(ExprParser.MUL, 0); }
+		public TerminalNode DIV() { return getToken(ExprParser.DIV, 0); }
 		public MulDivContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
@@ -139,21 +136,17 @@ public class ExprParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitMulDiv(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ExprVisitor ) return ((ExprVisitor<? extends T>)visitor).visitMulDiv(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class AddSubContext extends ExprContext {
-		public Token op;
 		public List<ExprContext> expr() {
 			return getRuleContexts(ExprContext.class);
 		}
 		public ExprContext expr(int i) {
 			return getRuleContext(ExprContext.class,i);
 		}
+		public TerminalNode ADD() { return getToken(ExprParser.ADD, 0); }
+		public TerminalNode SUB() { return getToken(ExprParser.SUB, 0); }
 		public AddSubContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
@@ -163,17 +156,14 @@ public class ExprParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitAddSub(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ExprVisitor ) return ((ExprVisitor<? extends T>)visitor).visitAddSub(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 	@SuppressWarnings("CheckReturnValue")
 	public static class ParensContext extends ExprContext {
+		public TerminalNode LPAR() { return getToken(ExprParser.LPAR, 0); }
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
 		}
+		public TerminalNode RPAR() { return getToken(ExprParser.RPAR, 0); }
 		public ParensContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
@@ -183,10 +173,24 @@ public class ExprParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitParens(this);
 		}
+	}
+	@SuppressWarnings("CheckReturnValue")
+	public static class ExpContext extends ExprContext {
+		public List<ExprContext> expr() {
+			return getRuleContexts(ExprContext.class);
+		}
+		public ExprContext expr(int i) {
+			return getRuleContext(ExprContext.class,i);
+		}
+		public TerminalNode EXP() { return getToken(ExprParser.EXP, 0); }
+		public ExpContext(ExprContext ctx) { copyFrom(ctx); }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ExprVisitor ) return ((ExprVisitor<? extends T>)visitor).visitParens(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterExp(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitExp(this);
 		}
 	}
 	@SuppressWarnings("CheckReturnValue")
@@ -200,35 +204,6 @@ public class ExprParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitInt(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ExprVisitor ) return ((ExprVisitor<? extends T>)visitor).visitInt(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	@SuppressWarnings("CheckReturnValue")
-	public static class PowerContext extends ExprContext {
-		public Token op;
-		public List<ExprContext> expr() {
-			return getRuleContexts(ExprContext.class);
-		}
-		public ExprContext expr(int i) {
-			return getRuleContext(ExprContext.class,i);
-		}
-		public PowerContext(ExprContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).enterPower(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ExprListener ) ((ExprListener)listener).exitPower(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ExprVisitor ) return ((ExprVisitor<? extends T>)visitor).visitPower(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 
@@ -248,41 +223,30 @@ public class ExprParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(10);
+			setState(8);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
-			case T__5:
-				{
-				_localctx = new FactorialContext(_localctx);
-				_ctx = _localctx;
-				_prevctx = _localctx;
-
-				setState(3);
-				match(T__5);
-				setState(4);
-				expr(3);
-				}
-				break;
 			case INT:
 				{
 				_localctx = new IntContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(5);
+
+				setState(3);
 				match(INT);
 				}
 				break;
-			case T__6:
+			case LPAR:
 				{
 				_localctx = new ParensContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(6);
-				match(T__6);
-				setState(7);
+				setState(4);
+				match(LPAR);
+				setState(5);
 				expr(0);
-				setState(8);
-				match(T__7);
+				setState(6);
+				match(RPAR);
 				}
 				break;
 			default:
@@ -304,20 +268,19 @@ public class ExprParser extends Parser {
 						{
 						_localctx = new MulDivContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(12);
+						setState(10);
 						if (!(precpred(_ctx, 6))) throw new FailedPredicateException(this, "precpred(_ctx, 6)");
-						setState(13);
-						((MulDivContext)_localctx).op = _input.LT(1);
+						setState(11);
 						_la = _input.LA(1);
-						if ( !(_la==T__0 || _la==T__1) ) {
-							((MulDivContext)_localctx).op = (Token)_errHandler.recoverInline(this);
+						if ( !(_la==MUL || _la==DIV) ) {
+						_errHandler.recoverInline(this);
 						}
 						else {
 							if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
 							_errHandler.reportMatch(this);
 							consume();
 						}
-						setState(14);
+						setState(12);
 						expr(7);
 						}
 						break;
@@ -325,33 +288,42 @@ public class ExprParser extends Parser {
 						{
 						_localctx = new AddSubContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(15);
+						setState(13);
 						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
-						setState(16);
-						((AddSubContext)_localctx).op = _input.LT(1);
+						setState(14);
 						_la = _input.LA(1);
-						if ( !(_la==T__2 || _la==T__3) ) {
-							((AddSubContext)_localctx).op = (Token)_errHandler.recoverInline(this);
+						if ( !(_la==ADD || _la==SUB) ) {
+						_errHandler.recoverInline(this);
 						}
 						else {
 							if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
 							_errHandler.reportMatch(this);
 							consume();
 						}
-						setState(17);
+						setState(15);
 						expr(6);
 						}
 						break;
 					case 3:
 						{
-						_localctx = new PowerContext(new ExprContext(_parentctx, _parentState));
+						_localctx = new ExpContext(new ExprContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_expr);
-						setState(18);
+						setState(16);
 						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
-						setState(19);
-						((PowerContext)_localctx).op = match(T__4);
-						setState(20);
+						setState(17);
+						match(EXP);
+						setState(18);
 						expr(5);
+						}
+						break;
+					case 4:
+						{
+						_localctx = new FactorialContext(new ExprContext(_parentctx, _parentState));
+						pushNewRecursionContext(_localctx, _startState, RULE_expr);
+						setState(19);
+						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
+						setState(20);
+						match(FACT);
 						}
 						break;
 					}
@@ -389,32 +361,34 @@ public class ExprParser extends Parser {
 			return precpred(_ctx, 5);
 		case 2:
 			return precpred(_ctx, 4);
+		case 3:
+			return precpred(_ctx, 3);
 		}
 		return true;
 	}
 
 	public static final String _serializedATN =
 		"\u0004\u0001\n\u001b\u0002\u0000\u0007\u0000\u0001\u0000\u0001\u0000\u0001"+
-		"\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0003"+
-		"\u0000\u000b\b\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0001"+
+		"\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0003\u0000\t\b\u0000\u0001"+
+		"\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0001"+
 		"\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0001\u0000\u0005\u0000\u0016"+
 		"\b\u0000\n\u0000\f\u0000\u0019\t\u0000\u0001\u0000\u0000\u0001\u0000\u0001"+
-		"\u0000\u0000\u0002\u0001\u0000\u0001\u0002\u0001\u0000\u0003\u0004\u001e"+
-		"\u0000\n\u0001\u0000\u0000\u0000\u0002\u0003\u0006\u0000\uffff\uffff\u0000"+
-		"\u0003\u0004\u0005\u0006\u0000\u0000\u0004\u000b\u0003\u0000\u0000\u0003"+
-		"\u0005\u000b\u0005\t\u0000\u0000\u0006\u0007\u0005\u0007\u0000\u0000\u0007"+
-		"\b\u0003\u0000\u0000\u0000\b\t\u0005\b\u0000\u0000\t\u000b\u0001\u0000"+
-		"\u0000\u0000\n\u0002\u0001\u0000\u0000\u0000\n\u0005\u0001\u0000\u0000"+
-		"\u0000\n\u0006\u0001\u0000\u0000\u0000\u000b\u0017\u0001\u0000\u0000\u0000"+
-		"\f\r\n\u0006\u0000\u0000\r\u000e\u0007\u0000\u0000\u0000\u000e\u0016\u0003"+
-		"\u0000\u0000\u0007\u000f\u0010\n\u0005\u0000\u0000\u0010\u0011\u0007\u0001"+
-		"\u0000\u0000\u0011\u0016\u0003\u0000\u0000\u0006\u0012\u0013\n\u0004\u0000"+
-		"\u0000\u0013\u0014\u0005\u0005\u0000\u0000\u0014\u0016\u0003\u0000\u0000"+
-		"\u0005\u0015\f\u0001\u0000\u0000\u0000\u0015\u000f\u0001\u0000\u0000\u0000"+
-		"\u0015\u0012\u0001\u0000\u0000\u0000\u0016\u0019\u0001\u0000\u0000\u0000"+
-		"\u0017\u0015\u0001\u0000\u0000\u0000\u0017\u0018\u0001\u0000\u0000\u0000"+
-		"\u0018\u0001\u0001\u0000\u0000\u0000\u0019\u0017\u0001\u0000\u0000\u0000"+
-		"\u0003\n\u0015\u0017";
+		"\u0000\u0000\u0002\u0001\u0000\u0002\u0003\u0001\u0000\u0004\u0005\u001e"+
+		"\u0000\b\u0001\u0000\u0000\u0000\u0002\u0003\u0006\u0000\uffff\uffff\u0000"+
+		"\u0003\t\u0005\u0001\u0000\u0000\u0004\u0005\u0005\b\u0000\u0000\u0005"+
+		"\u0006\u0003\u0000\u0000\u0000\u0006\u0007\u0005\t\u0000\u0000\u0007\t"+
+		"\u0001\u0000\u0000\u0000\b\u0002\u0001\u0000\u0000\u0000\b\u0004\u0001"+
+		"\u0000\u0000\u0000\t\u0017\u0001\u0000\u0000\u0000\n\u000b\n\u0006\u0000"+
+		"\u0000\u000b\f\u0007\u0000\u0000\u0000\f\u0016\u0003\u0000\u0000\u0007"+
+		"\r\u000e\n\u0005\u0000\u0000\u000e\u000f\u0007\u0001\u0000\u0000\u000f"+
+		"\u0016\u0003\u0000\u0000\u0006\u0010\u0011\n\u0004\u0000\u0000\u0011\u0012"+
+		"\u0005\u0006\u0000\u0000\u0012\u0016\u0003\u0000\u0000\u0005\u0013\u0014"+
+		"\n\u0003\u0000\u0000\u0014\u0016\u0005\u0007\u0000\u0000\u0015\n\u0001"+
+		"\u0000\u0000\u0000\u0015\r\u0001\u0000\u0000\u0000\u0015\u0010\u0001\u0000"+
+		"\u0000\u0000\u0015\u0013\u0001\u0000\u0000\u0000\u0016\u0019\u0001\u0000"+
+		"\u0000\u0000\u0017\u0015\u0001\u0000\u0000\u0000\u0017\u0018\u0001\u0000"+
+		"\u0000\u0000\u0018\u0001\u0001\u0000\u0000\u0000\u0019\u0017\u0001\u0000"+
+		"\u0000\u0000\u0003\b\u0015\u0017";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

@@ -1,87 +1,75 @@
-// Generated from Expr.g4 by ANTLR 4.10.1
+// Generated from MyGrammar.g4 by ANTLR 4.10.1
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
- * This class provides an empty implementation of {@link ExprListener},
+ * This class provides an empty implementation of {@link MyGrammarListener},
  * which can be extended to create a listener which only needs to handle a subset
  * of the available methods.
  */
-public class ExprBaseListener implements ExprListener {
+public class MyGrammarBaseListener implements MyGrammarListener {
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFactorial(ExprParser.FactorialContext ctx) { }
+	@Override public void enterMyStart(MyGrammarParser.MyStartContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFactorial(ExprParser.FactorialContext ctx) { }
+	@Override public void exitMyStart(MyGrammarParser.MyStartContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMulDiv(ExprParser.MulDivContext ctx) { }
+	@Override public void enterHello(MyGrammarParser.HelloContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMulDiv(ExprParser.MulDivContext ctx) { }
+	@Override public void exitHello(MyGrammarParser.HelloContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAddSub(ExprParser.AddSubContext ctx) { }
+	@Override public void enterGoodbye(MyGrammarParser.GoodbyeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAddSub(ExprParser.AddSubContext ctx) { }
+	@Override public void exitGoodbye(MyGrammarParser.GoodbyeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterParens(ExprParser.ParensContext ctx) { }
+	@Override public void enterName(MyGrammarParser.NameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitParens(ExprParser.ParensContext ctx) { }
+	@Override public void exitName(MyGrammarParser.NameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInt(ExprParser.IntContext ctx) { }
+	@Override public void enterAge(MyGrammarParser.AgeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInt(ExprParser.IntContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterPower(ExprParser.PowerContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitPower(ExprParser.PowerContext ctx) { }
+	@Override public void exitAge(MyGrammarParser.AgeContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

@@ -1,13 +1,23 @@
 grammar Expr;
 
-expr: expr op=('*'|'/') expr      # MulDiv
-    | expr op=('+'|'-') expr      # AddSub
-    | expr op= '^' expr           # Power
-    | '!' expr                    # Factorial
-    | INT                         # Int
-    | '(' expr ')'                # Parens
+// Parser rules
+expr:   expr ('*'|'/') expr   # MulDiv
+    |   expr ('+'|'-') expr   # AddSub
+    |   expr '^' expr         # Exp
+    |   expr '!'              # Factorial
+    |   INT                   # Int
+    |   '(' expr ')'          # Parens
     ;
 
-INT : [0-9]+ ;
+// Lexer rules
+INT :   [0-9]+ ;
+MUL :   '*' ;
+DIV :   '/' ;
+ADD :   '+' ;
+SUB :   '-' ;
+EXP :   '^' ;
+FACT:   '!' ;
+LPAR:  '(' ;
+RPAR:  ')' ;
 
-WS : [ \t\r\n]+ -> skip ;
+WS  :   [ \t\r\n]+ -> skip ;

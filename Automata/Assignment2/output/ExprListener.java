@@ -1,4 +1,4 @@
-// Generated from Expr.g4 by ANTLR 4.10.1
+// Generated from Expr.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -55,6 +55,18 @@ public interface ExprListener extends ParseTreeListener {
 	 */
 	void exitParens(ExprParser.ParensContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code Exp}
+	 * labeled alternative in {@link ExprParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterExp(ExprParser.ExpContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Exp}
+	 * labeled alternative in {@link ExprParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitExp(ExprParser.ExpContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code Int}
 	 * labeled alternative in {@link ExprParser#expr}.
 	 * @param ctx the parse tree
@@ -66,16 +78,4 @@ public interface ExprListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitInt(ExprParser.IntContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code Power}
-	 * labeled alternative in {@link ExprParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void enterPower(ExprParser.PowerContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Power}
-	 * labeled alternative in {@link ExprParser#expr}.
-	 * @param ctx the parse tree
-	 */
-	void exitPower(ExprParser.PowerContext ctx);
 }
