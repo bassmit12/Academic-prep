@@ -1,0 +1,15 @@
+T__0=1
+T__1=2
+T__2=3
+COLON=4
+WORD=5
+DIGIT=6
+DASH=7
+SPACE=8
+WS=9
+'and'=1
+'with'=2
+'telephone number'=3
+':'=4
+'-'=7
+' '=8
