@@ -204,6 +204,37 @@
 ))
 
 
+(maximize (nuzzles 1))
+(maximize (nuzzles 2))
+(maximize (nuzzles 3))
+(maximize (nuzzles 4))
+(maximize (nuzzles 5))
+
+(maximize (prittles 1))
+(maximize (prittles 2))
+(maximize (prittles 3))
+(maximize (prittles 4))
+(maximize (prittles 5))
+
+(maximize (skipples 1))
+(maximize (skipples 2))
+(maximize (skipples 3))
+(maximize (skipples 4))
+(maximize (skipples 5))
+
+(maximize (crottles 1))
+(maximize (crottles 2))
+(maximize (crottles 3))
+(maximize (crottles 4))
+(maximize (crottles 5))
+
+(maximize (dupples 1))
+(maximize (dupples 2))
+(maximize (dupples 3))
+(maximize (dupples 4))
+(maximize (dupples 5))
+
+
 
 
 (check-sat)
