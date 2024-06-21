@@ -1,0 +1,5 @@
+WORD=1
+SPACE=2
+PERIOD=3
+' '=2
+'.'=3

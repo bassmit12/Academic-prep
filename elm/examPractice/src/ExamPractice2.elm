@@ -51,3 +51,15 @@ posProduct tuples =
         |> List.filter (\(a, b) -> a * b > 0) -- Filter tuples where the product is positive
         |> List.map (\(a, b) -> a * b) -- Map the filtered tuples to their product
 
+
+layoutB: List Int -> String
+layoutB = List.foldl accLeft initLeft
+
+-- step
+accLeft : a -> b -> String
+accLeft number operation = 
+    "/" ++ String.fromInt number
+
+-- begin state
+initLeft : String
+initLeft = ""

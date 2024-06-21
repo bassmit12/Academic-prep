@@ -338,3 +338,29 @@ isBalanced tree =
     snd (heightAndBalance tree)
 
 
+minimumGain: List Float -> Maybe Float
+--- Your definition of "minimumGain"
+minimumGain list =
+    case list of 
+        [] -> Nothing
+        [x] -> 
+            if x > 0 then
+                Just x 
+            else 
+                Nothing
+        head :: tail ->
+            let
+                restMinimum = minimumGain tail 
+            in 
+            case restMinimum of 
+                Just minGain ->
+                    if head > 0 && head < minGain then 
+                        Just head 
+                    else 
+                        Just minGain
+                    
+                Nothing -> 
+                    if head > 0 then 
+                        Just head 
+                    else 
+                        Nothing
