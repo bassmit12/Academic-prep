@@ -1,0 +1,11 @@
+T__0=1
+TAG_OPEN_START=2
+TAG_OPEN_END=3
+TAG_CLOSE_END=4
+TAG_NAME=5
+TEXT=6
+WS=7
+'/'=1
+'<'=2
+'</'=3
+'>'=4

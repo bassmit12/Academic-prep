@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="88d3393a-e0db-49e3-9eda-865f25f88071" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Assignment3/.antlr/Calculator.interp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/.antlr/Calculator.tokens" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/.antlr/CalculatorLexer.interp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/.antlr/CalculatorLexer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/.antlr/CalculatorLexer.tokens" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/.antlr/CalculatorParser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/Calculator.g4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/Calculator.interp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/Calculator.tokens" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/CalculatorBaseListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/CalculatorBaseListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/CalculatorBaseVisitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/CalculatorBaseVisitor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/CalculatorLexer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/CalculatorLexer.interp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/CalculatorLexer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/CalculatorLexer.tokens" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/CalculatorListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/CalculatorListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/CalculatorParser$AssignmentContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/CalculatorParser$BooleanExprContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/CalculatorParser$ExprContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/CalculatorParser$FunctionCallContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/CalculatorParser$FunctionDeclContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/CalculatorParser$IfStatContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/CalculatorParser$PrintStatContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/CalculatorParser$ProgContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/CalculatorParser$StatContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/CalculatorParser$WhileStatContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/CalculatorParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/CalculatorParser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/CalculatorVisitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/CalculatorVisitor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/EvalVisitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/EvalVisitor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/antlr-4.10.1-complete.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/init.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Assignment3/input.txt" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2iNoBdisyiAJ1h74hjEzyMJyGJJ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/AP/Academic-prep/Automata/Website/example.html&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-PY-241.18034.82" />
+        <option value="bundled-python-sdk-975db3bf15a3-2767605e8bc2-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.18034.82" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="88d3393a-e0db-49e3-9eda-865f25f88071" name="Changes" comment="" />
+      <created>1719340262952</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1719340262952</updated>
+      <workItem from="1719340263906" duration="29000" />
+      <workItem from="1719340302937" duration="145000" />
+      <workItem from="1719340457343" duration="1868000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
