@@ -1,0 +1,9 @@
+GOODBYE=1
+HELLO=2
+NUMBER=3
+DASH=4
+ID=5
+WS=6
+'Bye'=1
+'Hello'=2
+'-'=4
