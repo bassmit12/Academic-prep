@@ -1,0 +1,10 @@
+CHALLENGE:
+Difficulty: "Easy"
+Description: "Create a regex that matches valid email addresses (simple version)."
+Samples: Match: "user@example.com"; Match: "john.doe@company.co.uk"; Match: "info@site-name.net"; NonMatch: "invalid@"; NonMatch: "@example.com"; NonMatch: "user@.com"
+END_CHALLENGE
+
+SOLUTION:
+Regex: "^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,}$"
+Explanation: "This regex matches an email with username before @, domain name after @, and a TLD of at least 2 letters. [\w.-]+ allows letters, digits, underscores, dots, and hyphens in both username and domain."
+END_SOLUTION

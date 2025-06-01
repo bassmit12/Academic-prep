@@ -1,0 +1,10 @@
+CHALLENGE:
+Difficulty: "Medium"
+Description: "Create a regex that matches valid hexadecimal color codes (like #FFF or #F0F0F0)."
+Samples: Match: "#FFF"; Match: "#000"; Match: "#F5A942"; Match: "#f5a942"; NonMatch: "FFF"; NonMatch: "#FFFF"; NonMatch: "#FFG"
+END_CHALLENGE
+
+SOLUTION:
+Regex: "^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$"
+Explanation: "This regex matches a # followed by either exactly 3 or exactly 6 hexadecimal digits (0-9, A-F, or a-f). The pipe symbol | acts as 'or' to allow either format."
+END_SOLUTION

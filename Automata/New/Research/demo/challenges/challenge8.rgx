@@ -1,0 +1,10 @@
+CHALLENGE:
+Difficulty: "Hard"
+Description: "Create a regex that matches valid IPv4 addresses."
+Samples: Match: "192.168.1.1"; Match: "10.0.0.1"; Match: "255.255.255.255"; NonMatch: "256.0.0.1"; NonMatch: "192.168.1"; NonMatch: "192.168.1.1.1"
+END_CHALLENGE
+
+SOLUTION:
+Regex: "^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"
+Explanation: "This regex matches each octet of an IPv4 address, ensuring each number is between 0 and 255. It uses a group for the first three octets (with a dot after each) and then matches the final octet."
+END_SOLUTION

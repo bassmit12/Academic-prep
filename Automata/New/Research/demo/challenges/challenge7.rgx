@@ -1,0 +1,10 @@
+CHALLENGE:
+Difficulty: "Hard"
+Description: "Create a regex that validates strong passwords: at least 8 characters, containing uppercase, lowercase, number, and special character."
+Samples: Match: "P@ssw0rd"; Match: "Str0ng!Pass"; Match: "C0mplex$"; NonMatch: "password"; NonMatch: "PASSWORD123"; NonMatch: "Pass word"
+END_CHALLENGE
+
+SOLUTION:
+Regex: "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};:'\"\\|,.<>\/?]).{8,}$"
+Explanation: "This regex uses positive lookaheads (?=...) to ensure the password contains lowercase, uppercase, digit, and special character, followed by a minimum length check of 8 characters."
+END_SOLUTION

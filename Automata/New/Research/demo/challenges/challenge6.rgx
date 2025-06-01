@@ -1,0 +1,10 @@
+CHALLENGE:
+Difficulty: "Medium"
+Description: "Create a regex that matches dates in format MM/DD/YYYY."
+Samples: Match: "01/01/2000"; Match: "12/31/1999"; Match: "05/15/2022"; NonMatch: "1/1/2000"; NonMatch: "13/01/2000"; NonMatch: "01/32/2000"
+END_CHALLENGE
+
+SOLUTION:
+Regex: "^(0[1-9]|1[0-2])/(0[1-9]|[12][0-9]|3[01])/\d{4}$"
+Explanation: "This regex validates MM as 01-12, DD as 01-31, and YYYY as any 4 digits. It doesn't check for invalid dates like 02/31/2000, but it ensures the basic format is correct."
+END_SOLUTION

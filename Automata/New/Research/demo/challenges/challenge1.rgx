@@ -1,0 +1,10 @@
+CHALLENGE:
+Difficulty: "Easy"
+Description: "Create a regex that matches strings containing only digits."
+Samples: Match: "123"; Match: "456789"; Match: "0"; NonMatch: "abc"; NonMatch: "123abc"; NonMatch: "abc123"
+END_CHALLENGE
+
+SOLUTION:
+Regex: "^\d+$"
+Explanation: "This regex uses ^\d+$ where ^ marks the start of the string, \d+ means one or more digits, and $ marks the end of the string. This ensures the entire string consists only of digits."
+END_SOLUTION

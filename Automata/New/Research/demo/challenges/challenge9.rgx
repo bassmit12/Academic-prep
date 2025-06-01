@@ -1,0 +1,10 @@
+CHALLENGE:
+Difficulty: "Hard"
+Description: "Create a regex that matches valid URLs (http or https)."
+Samples: Match: "http://example.com"; Match: "https://www.example.co.uk/path"; Match: "https://site.com/path?query=value"; NonMatch: "example.com"; NonMatch: "http://"; NonMatch: "http:/example.com"
+END_CHALLENGE
+
+SOLUTION:
+Regex: "^https?://([\w-]+\.)+[\w-]+(/[\w-./?%&=]*)?$"
+Explanation: "This regex matches http:// or https:// followed by a domain name with at least one subdomain, and an optional path. The domain part uses ([\w-]+\.)+ to ensure at least one period in the domain."
+END_SOLUTION

@@ -1,0 +1,10 @@
+CHALLENGE:
+Difficulty: "Easy"
+Description: "Create a regex that matches strings starting with 'A' and ending with 'Z'."
+Samples: Match: "AZ"; Match: "ABCZ"; Match: "A123Z"; NonMatch: "ABC"; NonMatch: "BAZ"; NonMatch: "az"
+END_CHALLENGE
+
+SOLUTION:
+Regex: "^A.*Z$"
+Explanation: "This regex uses ^ to match the start of the string, followed by 'A'. The .* matches zero or more of any character, and Z$ ensures the string ends with 'Z'."
+END_SOLUTION

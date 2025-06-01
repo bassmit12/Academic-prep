@@ -1,0 +1,10 @@
+CHALLENGE:
+Difficulty: "Medium"
+Description: "Create a regex that matches valid US phone numbers in format XXX-XXX-XXXX."
+Samples: Match: "123-456-7890"; Match: "555-123-4567"; Match: "999-888-7777"; NonMatch: "123-456-789"; NonMatch: "123-4567890"; NonMatch: "(123)456-7890"
+END_CHALLENGE
+
+SOLUTION:
+Regex: "^\d{3}-\d{3}-\d{4}$"
+Explanation: "This regex matches exactly 3 digits (\d{3}), followed by a hyphen, then 3 more digits, another hyphen, and finally 4 digits. The ^ and $ ensure the entire string matches this pattern."
+END_SOLUTION

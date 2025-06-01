@@ -1,0 +1,10 @@
+CHALLENGE:
+Difficulty: "Expert"
+Description: "Create a regex that validates balanced parentheses (this is tricky as regular expressions typically can't count)."
+Samples: Match: "()"; Match: "(())"; Match: "()()()"; NonMatch: "("; NonMatch: ")()"; NonMatch: "(()"
+END_CHALLENGE
+
+SOLUTION:
+Regex: "^(?:[^()]*\((?:[^()]*\)[^()]*\()*[^()]*\)[^()]*)*$"
+Explanation: "This is a complex regex that attempts to match balanced parentheses. It works for simple cases but has limitations, as true parenthesis matching requires a context-free grammar, not a regular expression. It uses nested groups to match pairs of parentheses."
+END_SOLUTION
