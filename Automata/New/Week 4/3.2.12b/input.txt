@@ -1,3 +1,0 @@
-Hello John 22
-Hello Isa 33
-Bye

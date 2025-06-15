@@ -1,0 +1,2 @@
+This week’s exercise was very different from last week’s. We initially misread the instructions and believed we had to complete it in ANTLR. Partway through, however, we realized we could work on paper, so we switched to a paper-based solution.
+We were also surprised by the volume of exercises this week. It seemed like a ton of work for just 3 points, and some of the exercises were a bit confusing, but we eventually figured them out.
