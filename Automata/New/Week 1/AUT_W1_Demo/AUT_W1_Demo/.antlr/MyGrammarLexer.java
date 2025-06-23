@@ -1,4 +1,4 @@
-// Generated from d:/AP/Academic-prep/Automata/New/Research/demo/MyGrammar.g4 by ANTLR 4.13.1
+// Generated from d:/AP/Academic-prep/Automata/New/Week 1/AUT_W1_Demo/AUT_W1_Demo/MyGrammar.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
