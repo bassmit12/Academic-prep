@@ -1,0 +1,11 @@
+1. Find a regular grammar for the following language on {a, b}:
+L = {w : na(w) ≥ 3, nb(w) is odd}.
+Note: na(w)* denotes the number of "a"s in the word w.
+
+[aaa]a*b[bb]*
+
+2. Find a context-free grammar for the language L = {anb
+m : n = m - 2}.
+
+?
+

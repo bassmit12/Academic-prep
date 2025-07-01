@@ -1,0 +1,13 @@
+Write regular expressions for the following languages on {0, 1}:
+
+a) All strings ending in 10.
+(0|1)*10
+
+b) All strings not ending in 10 
+| 0 
+| 1 
+| (0|1)*(00|01|11)
+
+2. Find regular expressions for the languages accepted by the following automata.
+?
+

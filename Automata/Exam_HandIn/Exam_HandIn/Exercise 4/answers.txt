@@ -1,0 +1,4 @@
+Find dfa’s for the following languages on {a, b}:
+1. all the strings with exactly two a’s and more than three b’s
+
+?
