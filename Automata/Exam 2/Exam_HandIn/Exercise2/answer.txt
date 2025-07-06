@@ -1,0 +1,19 @@
+Consider the language L defined by L ((ab + b)∗ b (a + ab)∗) 
+Q1.	List all strings in L with length less than 4.
+1. b
+2. abbb
+3. baab
+
+
+Q2.	Construct a regular expression for the reversed language Lᴿ (i.e., the language containing the reversed strings of L).
+Dont know how to get the reverse string
+
+Q3.	Give a regular expression for the set {anbm : n is odd, m ≥ 3}
+A possible regular expression for this set would be
+
+n(m^3)(n^2)*m*
+
+this results in atleast
+n=1 and m=3 and makes sure that n will stay odd because it can only go up in increments of 2 and the m* allows for 0 or infinete m's 
+
+Write your answer to a file in a separate folder.

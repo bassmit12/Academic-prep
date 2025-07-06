@@ -1,4 +1,4 @@
-// Generated from c:/Users/bassm/Downloads/Exam_HandIn/Exam_HandIn/Exercise 1/ExamGrammar.g4 by ANTLR 4.13.1
+// Generated from c:/Users/bassm/OneDrive/Documenten/GitHub/Academic-prep/automata/Exam_HandIn/Exam_HandIn/Exercise 1/ExamGrammar.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
